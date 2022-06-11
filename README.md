@@ -1,118 +1,162 @@
-# Hyde
+<p align="center">
+  <a target="_blank" href="http://nihey.github.io">
+    <img src="https://raw.githubusercontent.com/nihey/nihey.github.io/development/screenshot.png"/>
+  </a>
+</p>
 
-Hyde is a brazen two-column [Jekyll](http://jekyllrb.com) theme that pairs a prominent sidebar with uncomplicated content. It's based on [Poole](http://getpoole.com), the Jekyll butler.
+# 仁平 / Nihey Takizawa
 
-![Hyde screenshot](https://f.cloud.github.com/assets/98681/1831228/42af6c6a-7384-11e3-98fb-e0b923ee0468.png)
+My Personal Homepage ([here](http://nihey.github.io))
 
+[![Build
+Status](https://travis-ci.org/nihey/nihey.github.io.svg?branch=development)](https://travis-ci.org/nihey/nihey.github.io)
+[![Dependency
+Status](https://david-dm.org/nihey/nihey.github.io.png)](https://david-dm.org/nihey/nihey.github.io)
 
-## Contents
+# What is this?
 
-- [Usage](#usage)
-- [Options](#options)
-  - [Sidebar menu](#sidebar-menu)
-  - [Sticky sidebar content](#sticky-sidebar-content)
-  - [Themes](#themes)
-  - [Reverse layout](#reverse-layout)
-- [Development](#development)
-- [Author](#author)
-- [License](#license)
+This is a HTML5 presentation that will tell you a bit about me.
 
+# How does it work?
 
-## Usage
-
-Hyde is a theme built on top of [Poole](https://github.com/poole/poole), which provides a fully furnished Jekyll setup—just download and start the Jekyll server. See [the Poole usage guidelines](https://github.com/poole/poole#usage) for how to install and use Jekyll.
-
-
-## Options
-
-Hyde includes some customizable options, typically applied via classes on the `<body>` element.
-
-
-### Sidebar menu
-
-Create a list of nav links in the sidebar by assigning each Jekyll page the correct layout in the page's [front-matter](http://jekyllrb.com/docs/frontmatter/).
+Installing & Building
 
 ```
----
-layout: page
-title: About
----
+$ npm install
+$ npm run build
 ```
 
-**Why require a specific layout?** Jekyll will return *all* pages, including the `atom.xml`, and with an alphabetical sort order. To ensure the first link is *Home*, we exclude the `index.html` page from this list by specifying the `page` layout.
+This is the project structure:
 
-
-### Sticky sidebar content
-
-By default Hyde ships with a sidebar that affixes it's content to the bottom of the sidebar. You can optionally disable this by removing the `.sidebar-sticky` class from the sidebar's `.container`. Sidebar content will then normally flow from top to bottom.
-
-```html
-<!-- Default sidebar -->
-<div class="sidebar">
-  <div class="container sidebar-sticky">
-    ...
-  </div>
-</div>
-
-<!-- Modified sidebar -->
-<div class="sidebar">
-  <div class="container">
-    ...
-  </div>
-</div>
+```
+.
+├── assets
+│   ├── fonts
+│   ├── images
+│   │   ├── clouds
+│   │   │   ├── 1.png
+│   │   │   ├── 2.png
+│   │   │   ├── 3.png
+│   │   │   ├── 4.png
+│   │   │   ├── 5.png
+│   │   │   └── 6.png
+│   │   ├── favicon.png
+│   │   ├── me.png
+│   │   ├── random-chars
+│   │   │   ├── 1.png
+│   │   │   ├── 2.png
+│   │   │   ├── 3.png
+│   │   │   └── 4.png
+│   │   └── terrain.png
+│   └── texts
+│       ├── css.txt
+│       ├── javascript.txt
+│       └── text.txt
+├── environment.json
+├── index.html
+├── package.json
+├── plugins
+│   └── html-plugin.js
+├── README.md
+├── screenshot.png
+├── scripts
+│   ├── animate.js
+│   └── index.js
+├── styles
+│   ├── index.less
+│   └── prefixed.less
+└── webpack.config.js
 ```
 
+There are 5 files that handle most of the ***magic*** on the presentation:
 
-### Themes
+- `assets/texts/text.txt`
+- `assets/texts/javascript.txt`
+- `assets/texts/css.txt`
+- `scrips/animate.js`
+- `scripts/index.js`
 
-Hyde ships with eight optional themes based on the [base16 color scheme](https://github.com/chriskempson/base16). Apply a theme to change the color scheme (mostly applies to sidebar and links).
+`scripts/index.js` is our entry point. It'll initialize all the resources the
+dynamic javascript will need to operate directly on the user browser. You can
+see it exposes a lot of variables onto the browser global scope (via `window`).
 
-![Hyde in red](https://f.cloud.github.com/assets/98681/1831229/42b0b354-7384-11e3-8462-31b8df193fe5.png)
+```
+// 'page' global variable will store anything we might need to make the
+// presentation during the 'eval' calls.
+window.page = {
+  checkTags: function() {
+    Object.keys(this.tags).forEach(function(tag) {
+      this.control[tag] || ((this.tags[tag] > 0) && this.continues[tag]());
+    }, this);
+  },
+  checkFinished: function() {
+    // Hide skip button once all tags have finished
+    var allFinished = Object.keys(this.tags).every(tag => this.finished[tag]);
+    allFinished && $('#skip').hide();
+  },
+  control: {},
+  continues: {},
+  finished: {},
+  tags: {
+    'text': 1,
+    'javascript': 0,
+    'css': 0,
+  },
+};
 
-There are eight themes available at this time.
-
-![Hyde theme classes](https://f.cloud.github.com/assets/98681/1817044/e5b0ec06-6f68-11e3-83d7-acd1942797a1.png)
-
-To use a theme, add anyone of the available theme classes to the `<body>` element in the `default.html` layout, like so:
-
-```html
-<body class="theme-base-08">
-  ...
-</body>
+window.$ = $;
+window.hljs = hljs;
 ```
 
-To create your own theme, look to the Themes section of [included CSS file](https://github.com/poole/hyde/blob/master/public/css/hyde.css). Copy any existing theme (they're only a few lines of CSS), rename it, and change the provided colors.
+`scripts/animation.js` handle most of the hard work:
 
-### Reverse layout
+- It operates the semaphore-like structure at `window.page.tags`.
+- It times the presentation character output.
+- It calls the `progress` callback so that we may update the page behavior
+  according to the content inside each text-box
 
-![Hyde with reverse layout](https://f.cloud.github.com/assets/98681/1831230/42b0d3ac-7384-11e3-8d54-2065afd03f9e.png)
-
-Hyde's page orientation can be reversed with a single class.
-
-```html
-<body class="layout-reverse">
-  ...
-</body>
+```
+  // Tell animate which text it should input, which element id this text should
+  // be output, and which function to call on the callback signal
+  animate(require('../assets/texts/javascript.txt'), 'javascript', function(finished, chunk) {
+    // This callback function will execute the output chunk
+    eval(chunk);
+    // Highlight its text if a global highlight function was created
+    window.highlight && window.highlight('#javascript');
+    // Mark this box as finished if it has finished
+    window.page.finished.javascript = finished;
+    window.page.checkFinished();
+  });
 ```
 
+`assets/texts/*.txt` files are the content that will be displayed on the
+browser. You may notice that there are some special markup on them:
 
-## Development
+- `**` is the progress markup, it tells `animate` that the `progress` callback
+       should be fired on that line
 
-Hyde has two branches, but only one is used for active development.
+- `++[anything] or --[anything]` tells `animate` that the semaphore-like
+  `window.page.tags` should be either incremented or decremented, if a tag
+  value is zero (or any falsy value), its presentation will stop - e.g.:
+  `window.page.tags.javascript = 0; window.page.checkTags()` will make
+  JavaScript presentation stop.
 
-- `master` for development.  **All pull requests should be submitted against `master`.**
-- `gh-pages` for our hosted site, which includes our analytics tracking code. **Please avoid using this branch.**
+- `§` is a slight delay request before proceeding, you can stack those up to
+  increase the delay time: `§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§`.
 
+I hope that helps you, feel free to look into this code in any way you want.
 
-## Author
+# Acknowledgements
 
-**Mark Otto**
-- <https://github.com/mdo>
-- <https://twitter.com/mdo>
+- I thank [STRML](http://strml.net) who was the first one I've seen that have
+done something like that.
 
+- [OpenGameArt](http://opp.opengameart.org/) provided the images of clouds and
+terrain
 
-## License
+- [Famitsu](http://www.famitsu.com/freegame/tool/chibi/index2.html) provided the characters' sprites.
 
-Open sourced under the [MIT license](LICENSE.md).
+# License
 
-<3
+This code is released under
+[CC0](http://creativecommons.org/publicdomain/zero/1.0/) (Public Domain)
