@@ -1,73 +1,26 @@
-# Site settings
-title: Kyeong Nam, Ko
-email: "rhrud0303@gmail.com"
-description: "Portfolio"
-url: "https://gauguin94.github.io"
-baseurl: "/gauguin94.github.io"
-facebook_username: ""
-twitter_username: ""
-instagram_username: ""
-github_username:  ""
-deviantart_username: ""
-flickr_username: ""
-discus_shortname: ""
-share: true
+# Dependencies
+markdown:         redcarpet
+highlighter:      pygments
 
-# Owner/author information
-owner:
-  name:   photorama
-  avatar: avatar.png
-  favicon: favicon.ico
-  info: photography website template
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
 
-# Settings for comments helper
-# Set 'provider' to the comment provider you want to use. (i.e.  Disqus, Intense Debate, livefyre, or Facebook Comments)
-# Set 'provider' to false to turn commenting off globally.
-#Set 'provider: false' to disable comments globally.
-# Disable comments for individual pages/posts by specifying 'comments: false' in the page/post YAML Front Matter.
-#
-comments :
-  provider : disqus
-  disqus :
-    short_name : ""
+# Setup
+title:            분석하는 던붕이
+tagline:          'A Jekyll theme'
+description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+url:              http://gauguin94.github.io
+baseurl:          /gauguin94.github.io
 
-# Internal nav
-nav:
-  - GALLERY: "https://gauguin94.github.io/photorama/gallery/"  
-  - JOURNAL: "https://gauguin94.github.io/photorama/journal/"
-  - ABOUT: "https://gauguin94.github.io/photorama/about/"
+author:
+  name:           'Kyeong Nam, Ko'
+  url:            http://gauguin94.github.io
 
-# All translation keys
-translations:
- # 404.html
-  permalink: "/404.html"
+paginate:         5
 
-# Server
-destination:      	 ./_site
-port:             	 4000
+# Custom vars
+version:          2.1.0
 
-
-# Build settings
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
-paginate: 5
-paginate_path: "/journal/page:num/"
-permalink: "/journal/:title/"
-categories_path: "/journal/category/"
-tags_path: "/journal/tag/"
-gems: 
- - jekyll-paginate
-exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
-
-# SiteMap
-sitemap:
-    file: "/sitemap.xml"
-    exclude:
-        - "/atom.xml"
-        - "/feed.xml"
-        - "/feed/index.xml"
-    include_posts:
-        - "/writing/"
-    change_frequency_name: "change_frequency"
-    priority_name: "priority"
+github:
+  repo:           https://https://github.com/Gauguin94
