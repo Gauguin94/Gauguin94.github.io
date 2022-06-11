@@ -1,0 +1,234 @@
+* {
+  transition: all 0.4s ease-out;
+}
+**
+
+.text-container > div > pre {
+  padding: 1em;
+  border: 4px solid #2c3e50;
+  border-radius: 0.2em;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+img {
+  -o-animation: fade-in 2s;
+  -ms-animation: fade-in 2s;
+  -moz-animation: fade-in 2s;
+  -webkit-animation: fade-in 2s;
+  animation: fade-in 2s;
+}
+
+#text > pre {
+  white-space: normal;
+  background-color: rgba(63, 63, 63, 0.8);
+  color: #eff;
+}
+
+#text > pre a {
+  color: #f7ca18;
+}
+**
+++javascript
+--
+++javascript
+
+#canvas {
+  -o-animation: fade-in 2s;
+  -ms-animation: fade-in 2s;
+  -moz-animation: fade-in 2s;
+  -webkit-animation: fade-in 2s;
+  animation: fade-in 2s;
+  opacity: 1;
+}
+
+@keyframes side-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+#platforms > img {
+  -o-animation: side-scroll 3s linear infinite;
+  -ms-animation: side-scroll 3s linear infinite;
+  -moz-animation: side-scroll 3s linear infinite;
+  -webkit-animation: side-scroll 3s linear infinite;
+  animation: side-scroll 3s linear infinite;
+}
+**
+
+#water > img {
+  -o-animation: side-scroll 1s linear infinite;
+  -ms-animation: side-scroll 1s linear infinite;
+  -moz-animation: side-scroll 1s linear infinite;
+  -webkit-animation: side-scroll 1s linear infinite;
+  animation: side-scroll 1s linear infinite;
+}
+**
+
+#water {
+  transition: bottom 5s cubic-bezier(0.11, 0.01, 0.16, 1.68);
+  bottom: -90px !important;
+}
+**
+
+body {
+  transition: background 4s ease-out;
+  background: #59ABE3;
+}
+**
+
+#beauty-canvas {
+  -o-animation: fade-in 7s;
+  -ms-animation: fade-in 7s;
+  -moz-animation: fade-in 7s;
+  -webkit-animation: fade-in 7s;
+  animation: fade-in 7s;
+  opacity: 1;
+}
+**
+
+.heart {
+  animation: pulse 3s infinite !important;
+}
+**
+
+#javascript .hljs, #css .hljs {
+  background-color: rgba(63, 63, 63, 0.8);
+}
+
+@keyframes view-scroll {
+  from {
+    transform: translateX(100vw);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+#clouds > img {
+  z-index: -100;
+  -o-animation: view-scroll 30s linear;
+  -ms-animation: view-scroll 30s linear;
+  -moz-animation: view-scroll 30s linear;
+  -webkit-animation: view-scroll 30s linear;
+  animation: view-scroll 30s linear;
+}
+**
+
+#skip {
+  padding: 0.5em;
+  width: 100px;
+  border: none;
+  border-radius: 0.2em;
+  background-color: #a2ded0;
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #111;
+  transition: all 1s ease-out;
+}
+
+#skip:hover {
+  background-color: #1ba39c;
+}
+
+@media (max-width: 799px) {
+  #javascript {
+    display: none;
+  }
+
+  #css {
+    margin-left: 30px;
+  }
+
+  #text {
+    width: 75% !important;
+  }
+}
+**
+
+@media (max-width: 599px) {
+  #javascript, #css {
+    display: none;
+  }
+
+  #text {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+}
+**
+
+@keyframes slight-dangle {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.github {
+  position: fixed;
+  z-index: 1100;
+  bottom: 35px;
+  right: 15px;
+  color: #1E824C;
+  font-size: 48px;
+  text-decoration: none;
+  outline: 0;
+  transition: color 0.3s;
+  -o-animation: slight-dangle 4s ease-in-out infinite;
+  -ms-animation: slight-dangle 4s ease-in-out infinite;
+  -moz-animation: slight-dangle 4s ease-in-out infinite;
+  -webkit-animation: slight-dangle 4s ease-in-out infinite;
+  animation: slight-dangle 4s ease-in-out infinite;
+}
+
+#water {
+  -o-animation: opacity-change 5s ease-in-out infinite, slight-dangle 4s ease-in-out infinite;
+  -ms-animation: opacity-change 5s ease-in-out infinite, slight-dangle 4s ease-in-out infinite;
+  -moz-animation: opacity-change 5s ease-in-out infinite, slight-dangle 4s ease-in-out infinite;
+  -webkit-animation: opacity-change 5s ease-in-out infinite, slight-dangle 4s ease-in-out infinite;
+  animation: opacity-change 5s ease-in-out infinite, slight-dangle 4s ease-in-out infinite;
+}
+**
+
+.github, .github * {
+  opacity: 1 !important;
+}
+
+.github:hover {
+  color: #A2DED0;
+}
+**
+
+@keyframes person-scroll {
+  from {
+    right: -32px;
+  }
+  to {
+    right: 100%;
+  }
+}
+
+.random-person {
+  opacity: 1 !important;
+  position: absolute;
+  right: -32px;
+  top: 0;
+}
+**

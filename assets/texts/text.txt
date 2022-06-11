@@ -1,0 +1,98 @@
+<h1>Nihey Takizawa (仁平 in Japanese)</h1>
+**
+§§§
+++css
+§§§§§§
+
+<h2>About Me</h2>
+**
+§§§
+
+<p>
+  A Developer and Entrepreneur currently based on Ribeirão Preto - Brazil.
+  Currently mainly working on my next own project called
+  <a target="_blank" rel="noopener noreferrer" href="https://videomatik.com.br/">Videomatik</a>
+  with my partners
+  <a target="_blank" rel="noopener noreferrer" href="https://brorlandi.github.io/">Bruno Orlandi</a>
+  and Hygor Amorim (from
+  <a target="_blank" rel="noopener noreferrer" href="https://www.ozprodutora.com.br/">Oz Productions</a>).
+</p>
+**
+§§§
+
+<p>
+  Over the years, I've worked on several projects, helping to build them from
+  scratch and maintain them until a substantial growth. Some of these projects
+  were my own and some of them were done as an outsource contractor.
+</p>
+**
+§§§
+
+<p>
+  Some of my own projects that I would like to highlight are:
+  <ul>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://kassellabs.io/">Kassel Labs</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://starwarsintrocreator.kassellabs.io/">Star Wars Intro Creator</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://videomatik.com.br/">Videomatik</a></li>
+    <li>
+      <a target="_blank" rel="noopener noreferrer" href="https://sheet.best/">
+        Sheet Best
+      </a>
+      (sold to <a target="_blank" rel="noopener noreferrer" href="https://www.xoxo.vc/">XOXO</a>)
+    </li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://cliqueimudei.com/">Cliquei Mudei</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://retro-sprite-creator.nihey.org/">Retro Sprite Creator</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://whatsdirect.zerosoft.com.br/">WhatsDirect.io</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/nihey/node-bovespa">Node Bovespa</a></li>
+  </ul>
+</p>
+**
+§§§
+
+If you want to stay updated about my new projects, I recommend following me on
+<a target="_blank" rel="noopener noreferrer" href="https://www.producthunt.com/@nihey">
+  Product Hunt
+</a>
+and
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/nihey">GitHub</a>. You'll see the best of me there.
+
+<p>
+  My current Favorite Tech Stack is:
+  <ul>
+    <li>
+      Backend
+      <ul>
+        <li>Node</li>
+        <li>Strapi</li>
+        <li>GraphQL</li>
+      </ul>
+    </li>
+    <li>
+      Frontend
+      <ul>
+        <li>React</li>
+        <li>Next.JS</li>
+        <li>Expo (for Apps)</li>
+      </ul>
+    </li>
+    <li>
+      DevOps
+      <ul>
+        <li>Linux</li>
+        <li>PostgreSQL</li>
+        <li>Traefik</li>
+        <li>Docker</li>
+        <li>Vercel</li>
+      </ul>
+    </li>
+  </ul>
+</p>
+**
+§§§
+
+<p>
+  You can contact me at my personal email address at:
+  <a href="mailto:nihey.takizawa@gmail.com"><b>nihey.takizawa@gmail.com</b></a>
+</p>
+**
+§§§

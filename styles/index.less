@@ -1,0 +1,133 @@
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import "../node_modules/highlight.js/styles/zenburn.css";
+@import "./prefixed.less";
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+}
+
+body {
+  > .text-container {
+    position: fixed;
+    width: 100%;
+    padding: 20px 30px;
+    font-family: "ModeSeven", "Courier";
+    z-index: 1000;
+
+    * {
+      z-index: 1000;
+    }
+
+    > * {
+      display: inline-block;
+      float: left;
+
+      > pre {
+        margin-top: 0;
+        overflow: auto;
+        white-space: pre-wrap;       /* CSS 3 */
+        white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+        white-space: -pre-wrap;      /* Opera 4-6 */
+        white-space: -o-pre-wrap;    /* Opera 7 */
+        word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+        a {
+          text-decoration: none;
+          font-weight: bold;
+        }
+      }
+    }
+
+    > #text {
+      opacity: 1;
+      margin-left: -15px;
+      width: 50%;
+
+      > pre {
+        text-align: justify;
+      }
+    }
+
+    > #javascript {
+      margin: 0 15px;
+      font-size: 0.6em;
+      width: 25%;
+    }
+
+    > #css {
+      margin-right: -15px;
+      font-size: 0.6em;
+      width: 25%;
+    }
+  }
+
+  > .animation-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    > :first-child {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      height: 32px;
+      z-index: 999;
+
+      canvas {
+        opacity: 0;
+        display: inline-block;
+        z-index: 999;
+      }
+    }
+
+    > #platforms {
+      white-space: nowrap;
+      height: 160px;
+    }
+
+    > #water {
+      position: absolute;
+      white-space: nowrap;
+      bottom: -160px;
+    }
+
+    > #clouds {
+      position: absolute;
+      bottom: 192px;
+      * {
+        position: absolute;
+      }
+    }
+  }
+
+  #skip {
+    opacity: 0;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 1100;
+  }
+}
+
+.github {
+  position: fixed;
+  opacity: 0;
+}
+
+.my-container {
+  position: relative;
+}
+
+.heart {
+  opacity: 0;
+  position: absolute;
+  font-family: Arial;
+  left: 8px;
+  font-size: 30px;
+  top: -45px;
+  color: rgb(177, 30, 97);
+}
