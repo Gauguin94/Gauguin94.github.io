@@ -3,7 +3,7 @@ title: PHOTORAMA
 email: ""
 description: "Photo Journal"
 url: "https://gauguin94.github.io"
-baseurl: "/photorama"
+baseurl: "/gauguin94.github.io"
 facebook_username: ""
 twitter_username: ""
 instagram_username: ""
@@ -33,9 +33,9 @@ comments :
 
 # Internal nav
 nav:
-  - GALLERY: "https://sunbliss.github.io/photorama/gallery/"  
-  - JOURNAL: "https://sunbliss.github.io/photorama/journal/"
-  - ABOUT: "https://sunbliss.github.io/photorama/about/"
+  - GALLERY: "https://gauguin94.github.io/photorama/gallery/"  
+  - JOURNAL: "https://gauguin94.github.io/photorama/journal/"
+  - ABOUT: "https://gauguin94.github.io/photorama/about/"
 
 # All translation keys
 translations:
