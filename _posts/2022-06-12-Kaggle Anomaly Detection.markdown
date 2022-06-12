@@ -16,7 +16,10 @@ layout: post
 데이터는 다음과 같이 이루어져 있다. timestamp(float), value(int), is_anomaly(boolean), predicted(float). 여기서 포커싱해야할 column은 value와 predicted이다. value는 해당 timestamp에 대해 어떠한 지표를 측정한 실수값이며, predicted는 해당 timestamp에 대한 미지의 예측 모델이 추론하여 내놓은 예측값이다. 이 미지의 모델(black box)은 정상 데이터에 대한 분포만 알고 있고, 그를 기반으로 추론을 진행하는 모델이다. 마지막으로, is_anomaly는 데이터가 정상/비정상 여부를 나타낸다. 정상 데이터는 False, 비정상 데이터는 True로 label되어 있다. 당연하게도, 우리는 train set으로 학습과 검증을 하고, test set으로 최종 평가를 진행하기 때문에 train set에는 각 샘플마다 True or False를 확인할 수 있지만(지도학습) test set는 is_anomaly column만이 존재하며 공란으로 되어있다. (우리가 예측해야 한다!)  
 
 
-점수는 test set에 대한 F<sub>1</sub>-score의 평균으로 결정되며, 모든 값을 False로 판단하는 것만으로도 95%의 정확도를 얻을 수 있다. 하지만 이는 바람직하지 않다. 고객은 정상 데이터보다 비정상 데이터에 더 관심을 갖기 때문이다.
+<img src="/images/fulls/train_consist.jpg" class="fit image">  
+
+
+train set은 정상 샘플 15054개, 비정상 샘플 776개로 구성되어 있다. 점수는 test set에 대한 F<sub>1</sub>-score의 평균으로 결정되며, 모든 값을 False로 판단하는 것만으로도 95%의 정확도를 얻을 수 있다. 하지만 이는 바람직하지 않다. 고객은 정상 데이터보다 비정상 데이터에 더 관심을 갖기 때문이다.
 
 
 ## **Method**  
