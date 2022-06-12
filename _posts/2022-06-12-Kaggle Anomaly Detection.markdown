@@ -53,7 +53,7 @@ value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 �
 ROC 곡선 아래의 영역이 0.933으로 언뜻 보기에 높은 값이 산출되었다. 하지만 높은 수치는 곧 과대적합(overfitting)이라는 신호가 될 수 있기 때문에 벌써 좋아하기는 이르다.  
 
 
-<img src="/images/fulls/origin_graph.jpg" class="fit image">
+<img src="/images/fulls/origin_graph.JPG" class="fit image">
 
 
 좌측 그림은 추론을 거치지 않은, 주최자가 배포한 test set을 given prediction에 따른 value로 표현한 그래프이며 우측 그림은 모델의 추론 결과를 나타낸 것이다. 또한 총 3960개의 샘플로 이루어진 test set에 대하여 모델은 정상 샘플 3,923개, 비정상 샘플 37개라는 결과를 도출하였다.  
