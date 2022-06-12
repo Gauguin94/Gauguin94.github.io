@@ -13,7 +13,7 @@ layout: post
 <img src="/images/fulls/data_info.jpg" class="fit image">  
 
 
-데이터는 다음과 같이 이루어져 있다. timestamp(float), value(int), is_anomaly(boolean), predicted(float). 여기서 포커싱해야할 column은 value와 predicted이다. value는 해당 timestamp에 대해 어떠한 지표를 측정한 실수값이며, predicted는 해당 timestamp에 대한 미지의 예측 모델이 추론하여 내놓은 예측값이다. 이 미지의 모델(black box)은 정상 데이터에 대한 분포만 알고 있고, 그를 기반으로 추론을 진행하는 모델이다. 마지막으로, is_anomaly는 데이터가 정상/비정상 여부를 나타낸다. 정상 데이터는 False, 비정상 데이터는 True로 label되어 있다. 당연하게도, 우리는 train set으로 학습과 검증을 하고, test set으로 최종 평가를 진행하기 때문에 train set에는 각 샘플마다 True or False를 확인할 수 있지만(지도학습) test set는 is_anomaly column만이 존재하며 공란으로 되어있다. (우리가 예측해야 한다!)  
+데이터는 다음과 같이 이루어져 있다. timestamp(float), value(int), is_anomaly(boolean), predicted(float). 여기서 포커싱해야할 column은 value와 predicted이다. value는 해당 timestamp에 대해 어떠한 지표를 측정한 실수값이며, predicted는 해당 timestamp에 대한 미지의 예측 모델이 추론하여 내놓은 예측값이다. 미지의 모델(black box)은 정상 데이터에 대한 분포만 알고 있고, 그를 기반으로 추론을 진행하는 모델이다. 마지막으로, is_anomaly는 데이터가 정상/비정상 여부를 나타낸다. 정상 데이터는 False, 비정상 데이터는 True로 label되어 있다. 당연하게도, 우리는 train set으로 학습과 검증을 하고, test set으로 최종 평가를 진행하기 때문에 train set에는 각 샘플마다 True or False를 확인할 수 있지만(지도학습) test set는 is_anomaly column만이 존재하며 공란으로 되어있다. (우리가 예측해야 한다!)  
 
 
 <img src="/images/fulls/train_consist.jpg" class="fit image">  
@@ -37,7 +37,7 @@ value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 �
 좌측 그림은 시간에 따른 value, 우측 그림은 미지의 모델이 내놓은 예측값(given prediction)에 따른 value를 나타낸 것이다. 앞서 상관관계에서 확인했듯이, 시간에 대한 상관도는 매우 옅기 때문에 given prediction과 value에 중점을 두고 모델이 추론할 수 있도록 데이터 전처리를 진행하겠다. 먼저, 모델은 아래와 같은 Pipeline을 거친다.  
   
 1. 데이터 전처리  
-2. Support Vector Classifier를 사용한 train set 학습 및 분류한 validation set에 대한 추론  
+2. Support Vector Classifier를 사용한 train set 학습 및 StratifiedKFold를 사용한 validation set 추론 (학습 및 검증)
 3. fit된 SVC를 이용한 test set 추론  
 
 
