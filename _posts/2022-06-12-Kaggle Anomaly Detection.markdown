@@ -15,6 +15,7 @@ layout: post
   
 ## **Method**  
   
+  
 <img src="/images/fulls/data_corr.jpg" class="fit image">  
   
 value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 있다.  
