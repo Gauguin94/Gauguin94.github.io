@@ -41,3 +41,4 @@ value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 �
 3. fit된 SVC를 이용한 test set 추론  
 
 
+첫 번째로 생각할 수 있는 것은 value와 predicted의 데이터를 집어넣어 학습하는 것이다.
