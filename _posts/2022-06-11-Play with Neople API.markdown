@@ -2,6 +2,7 @@
 layout: post
 ---
 <img src="/images/fulls/johncena.png" style="width:200px; height:230px;">
+바칼 - 죤씨나
 
 # 시간대별 강화 성공 비율을 확인해보자.
 <img src="/images/fulls/yd_log.jpg" style="width:706x; height:363px;">  
