@@ -250,7 +250,7 @@ arrangeBytime 메소드에서는 selectValue에서 초기화한 성공과 실패
 **~~13강 도전을 33번 실패한 친구에게는 유용할 수도 있을 것 같다...~~**  
 
 # 결과 및 후기
-<img src="/images/fulls/whole_log.jpg" style="width:542px; height:403px;">
+<img src="/images/fulls/whole_log.JPG" style="width:542px; height:403px;">
 
 위 사진은 출력 중 일부를 캡쳐한 것이다.  
 성공 비율이 높은 새벽 특정 시간대나 15~18시의 경우,  
