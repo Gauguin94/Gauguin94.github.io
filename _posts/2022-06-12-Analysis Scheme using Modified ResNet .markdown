@@ -14,7 +14,6 @@ layout: post
 > 심전도 데이터에 관한 연구는 대부분 심전도 12유도를 통해 얻은 데이터를 사용한다.  
 > 12유도는 표준사지유도, 단극사지유도, 흉부유도로 진행된다.  
 > 본 모델에서는 학습 및 성능평가를 위해 MIT-BIH arrhythmia DB(부정맥 데이터베이스)를 이용하였다.  
-<br/>
 
 ## MIT-BIH 부정맥 데이터베이스(MIT-BIH arrhythmia DB)
 [ECG Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat)  
@@ -37,7 +36,6 @@ layout: post
 >> 레이블은 각 샘플의 끝에 존재한다. (ex) ecg[182] => 레이블)  
 >> 레이블을 제외한 샘플 내 데이터는 심전도의 time step에 대응되는 값,  
 >> 즉, 파형(wave)에 대한 정보이다. (ex) ecg[:181])  
-<br/>
 
 # 모델 구현
 ---
@@ -51,7 +49,6 @@ layout: post
 >> 네트워크를 구성하였다. 하지만 완전히 앙상블과 똑같다고 말할 수는 없다.  
 >> ResNeXt의 기법을 사용하였기 때문인데, 나뉘어진 입력 혹은 이전 단의 출력들이  
 >> 독립적으로 훈련되는게 아니기 때문이다.  
-<br/>
 
 ## Proposed Connection
 <br/>
@@ -62,9 +59,7 @@ layout: post
 >> 보편적으로 사용되는 합성곱 연산(conv2d)에서는 위와 같은 기준을 갖고 연산이 진행된다.  
 >> 하지만 필자는 conv1d를 사용하였고, conv1d에서의 연산은 아래와 같이 진행된다.  
 >> 각 샘플에서의 time-step이 height에 해당한다!  
-<br/>
 <img src="/images/fulls/ex_image_2.jpg" style="width:564px; height:465px;">  
-
 >> proposed connection은 제일 처음으로 모델에 들어오는 입력을  
 >> 표시된 각 부분에 전달하는 역할을 한다.  
 >> 각 부분에 전달된 값들은 그 부분에 존재하는,  
@@ -78,6 +73,7 @@ layout: post
 X_ = [x1, x2] # if shape of small 'x' is (64, 128, 30) => (Batch size, Channel, Height)
 X = torch.cat(X_, axis=2) # shape of capital 'X' is (64, 128, 60) => (Batch size, Channel, Height)
 ```  
+
 >> 모델로 들어오기 이전인, 가장 초기의 입력값(x)과  
 >> feature map(h(x))들을 concatenation하여  
 >> 아래의 그림과 같은 연산을 수행하게 된다.  
@@ -88,7 +84,6 @@ X = torch.cat(X_, axis=2) # shape of capital 'X' is (64, 128, 60) => (Batch size
 >> 연산이 가능하도록 tensor의 shape만 맞춰주는 작업을 수행한다.  
 >> 아래 그림은 위의 그림과 다르게 편의상 transpose된 tensor로 표현하였다.  
 <img src="/images/fulls/modified_resnet.jpg" style="width:422px; height:215px;">  
-<br/>
 
 # 결과
 ---
@@ -103,6 +98,4 @@ X = torch.cat(X_, axis=2) # shape of capital 'X' is (64, 128, 60) => (Batch size
 > 앞선 데이터 구성에서 살펴봤듯이, 'S'와 'F'에 해당하는 샘플의 수가 매우 적어  
 > 해당 부분에 대해서는 성능이 다소 낮음을 확인할 수 있다.  
 > 하지만 세상의 모든 데이터는 이와 같은 불균형을 이루고 있다.  
-> 이와 같은 데이터 불균형을 어느정도 완화하거나, 완벽히 해소하는 것이 앞으로의 과제일 것이다.  
-<br/>
-<br/>
+> 이와 같은 데이터 불균형을 어느정도 완화하거나, 완벽히 해소하는 것이 앞으로의 과제일 것이다.
