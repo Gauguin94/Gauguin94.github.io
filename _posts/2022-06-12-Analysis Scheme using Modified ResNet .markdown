@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<img src="/images/fulls/ecg_bg.jpg" class="fit image">
+<img src="/images/fulls/ecg_bg.jpg" style="width:234px; height:298px;">
 <br/>
 
 # 심전도 데이터(ElectroCardioGram, ECG)  
