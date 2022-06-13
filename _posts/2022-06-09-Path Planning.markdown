@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<img src="/images/fulls/path_bg.PNG" style="width:787px; height:771px;">  
+<img src="/images/fulls/path_bg.PNG" style="width:396px; height:385px;">  
 
 # 기업 참여형 국가 연구 과제  
 # (일부 서술)  
