@@ -125,7 +125,10 @@ window 11의 이동평균을 적용하겠다.
 a라는 값이 있다면 그 a라는 값과(+1), a라는 값 이전 5개의 값(+5),  
 그리고 a라는 값 이후의 5개의 값(+5 = 11)에 대한 이동평균을 구하고자  
 window의 크기를 11로 선정하였다.(기준이 되는 샘플 1개와 전후값 10개의 평균.)  
-  
+그리고 해당 given prediction에 매칭되는 value에서 이동평균을 감한다.  
+```python
+data["value"][a번째] - data.rolling(window=11, center=True).mean()
+```
 
 <img src="/images/fulls/duplicate.jpg" class="fit image">  
   
