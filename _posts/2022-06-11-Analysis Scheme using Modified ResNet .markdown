@@ -4,7 +4,7 @@ layout: post
 <img src="/images/fulls/ecg_bg.jpg" style="width:234px; height:298px;">
 <br/>
 
-# 심전도 데이터(ElectroCardioGram, ECG)  
+# 심전도 데이터(ElectroCardioGram, ECG) 분류
 # 석사 개인 연구
 ---
 <br/>
