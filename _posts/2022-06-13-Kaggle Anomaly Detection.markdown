@@ -75,7 +75,8 @@ corr_matrix["is_anomaly"].sort_values(ascending=False)
 > 먼저, 모델은 아래와 같은 Pipeline을 거친다.  
 > 1. 데이터 전처리  
 > 2. Support Vector Classifier를 사용한 train set 학습 및 StratifiedKFold를 사용한 validation set 추론 (학습 및 검증)
-> 3. fit된 SVC를 이용한 test set 추론
+> 3. fit된 SVC를 이용한 test set 추론  
+
 ```python
 x, y = [], []
 for num in range(len(data)):
