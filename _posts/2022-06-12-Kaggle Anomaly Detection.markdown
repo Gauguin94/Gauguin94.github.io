@@ -14,9 +14,13 @@ layout: post
 고객에게 위험을 전달할 수 있도록 하는 것이 이 과제의 목표이다.  
 
 
+```python
+print(data.info())
+print(data)
+```  
 <img src="/images/fulls/data_info.jpg" class="fit image">  
-
-
+  
+  
 데이터는 다음과 같이 이루어져 있다.  
 timestamp(float), value(int), is_anomaly(boolean), predicted(float).  
 여기서 포커싱해야할 column은 value와 predicted이다.  
@@ -32,9 +36,13 @@ train set에는 각 샘플마다 True or False를 확인할 수 있지만(지도
 test set는 is_anomaly column만이 존재하며 공란으로 되어있다.(우리가 예측해야 한다!)   
 
 
+```python
+print(len(data["is_anomaly"][data["is_anomaly"]==False]))
+print(len(data["is_anomaly"][data["is_anomaly"]==True]))
+```  
 <img src="/images/fulls/train_consist.jpg" class="fit image">  
-
-
+  
+  
 train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 있다.  
 점수는 test set에 대한 F1-score의 평균으로 결정되며,  
 모든 값을 False로 판단하는 것만으로도 95%의 정확도를 얻을 수 있다.  
@@ -44,15 +52,19 @@ train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 �
 ## **무지성 도전**  
 
 
+```python
+corr_matirx = data.corr()
+corr_matrix["is_anomaly"].sort_values(ascending=False)
+```  
 <img src="/images/fulls/data_corr.jpg" class="fit image">  
-
-
+  
+  
 value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 있다.  
-
-
+  
+  
 <img src="/images/fulls/origin_data.jpg" class="fit image">  
-
-
+  
+  
 좌측 그림은 시간에 따른 value, 우측 그림은 미지의 모델이  
 내놓은 예측값(given prediction)에 따른 value를 나타낸 것이다.  
 붉은색 점은 비정상, 파란색 점은 정상을 나타낸다. 앞서 상관관계에서 확인했듯이,  
@@ -65,28 +77,58 @@ value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 �
 3. fit된 SVC를 이용한 test set 추론  
 
 
-<img src="/images/fulls/datapr_origin.jpg" class="fit image">  
+```python
+x, y = [], []
+for num in range(len(data)):
+    elem_1 = data["predicted"][num]
+    elem_2 = data["value"][num]
+    x.append([elem_1, elem_2])
+    if data["is_anomaly"][num]==True:
+        y.append(1)
+    else:
+        y.append(0)
+x = np.array(x)
 
-
+low_weight = (len(data["is_anomaly"][data["is_anomaly"]==True])/len(data["is_anomaly"]))*100
+high_weight = (len(data["is_anomaly"][data["is_anomaly"]==False])/len(data["is_anomaly"]))*100
+```   
+  
+  
 가장 먼저 생각할 수 있는 것은 value와 predicted의 데이터를 집어넣어 학습하는 것이다.  
 학습 데이터를 (data["predicted"], data["value"])꼴로 바꾸고  
 str(boolean)로 이루어져 있는 is_anomaly를 0, 1로 바꿔준다.  
 그리고 가우시안 커널과 가중치를 적용한 SVC를 사용할 것이기 때문에 미리 weight를 초기화한다.  
 왜 가중치를 적용한 SVC를 사용하냐? 지도학습의 특성에 의해,  
 적어도 train set의 정상/비정상 비율을 알고 있기 때문에 효율적인 학습을 위해 이와 같이 진행한다.  
+  
 
-
+```python
+svc = SVC(class_weight={0:low_weight, 1:high_weight})
+svc.fit(x, y)
+cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=42)
+scores = cross_val_score(svc, x, y, scoring='roc_auc', cv=cv, n_jobs=-1)
+print('Mean ROC AUC: %.3f'%mean(scores))
+```  
 <img src="/images/fulls/origin_fit.jpg" class="fit image">  
-
-
+  
+  
 ROC 곡선 아래의 영역이 0.933으로 언뜻 보기에 높은 값이 산출되었다.  
 하지만 높은 수치는 곧 과대적합(overfitting)이라는 신호가 될 수 있기 때문에 벌써 좋아하기는 이르다.  
-
-
-<img src="/images/fulls/origin_graph.JPG" class="fit image">
-<img src="/images/fulls/origin_result.jpg" class="fit image">
-
-
+  
+  
+```python
+test_x = []
+for num in range(len(test)):
+    elem_1 = test["predicted"][num]
+    elem_2 = test["value"][num]
+    test_x.append([elem_1, elem_2])
+test_x = np.array(test_x)
+result = svc.predict(test_x)
+```  
+<img src="/images/fulls/origin_graph.jpg" class="fit image">  
+<img src="/images/fulls/origin_result.jpg" class="fit image">  
+  
+  
 좌측 그림은 추론을 거치지 않은, 주최자가 배포한 test set을  
 given prediction에 따른 value로 표현한 그래프이며  
 우측 그림은 모델의 추론 결과를 나타낸 것이다.  
@@ -100,10 +142,10 @@ given prediction에 따른 value로 표현한 그래프이며
   
 ## **지성 도전**  
   
-
-<img src="/images/fulls/mv.jpg" class="fit image">
-
-
+  
+<img src="/images/fulls/mv.jpg" class="fit image">  
+  
+  
 이동평균이란 무엇인가?  
 이동평균은 말 그대로 일정 length(보통 window라고 표현.)를 기준으로  
 전체 구간에서 특정 구간을 이동하며 window 크기만큼의 구간의 평균을 구하는 것이다.  
@@ -120,19 +162,30 @@ time sequence 데이터이기 때문에 시간을 완전히 배제하는 것은 
 **그리고** given prediction은 정상 데이터의 분포를 알고 있는  
 미지의 모델의 예측값이라고 했기 때문에 정상 샘플들에 대한 given prediction과  
 비정상 샘플들에 대한 given prediction에는 확연한 차이가 있을 것이다.  
-그리하여 필자는 given prediction에 대해("predicted" column에 해당하는 값들.)  
+  
+  
+```python
+data["value"][a번째] - data.rolling(window=11, center=True).mean()
+```  
+  
+
+given prediction에 대해("predicted" column에 해당하는 값들.)  
 window 11의 이동평균을 적용하겠다.  
 a라는 값이 있다면 그 a라는 값과(+1), a라는 값 이전 5개의 값(+5),  
 그리고 a라는 값 이후의 5개의 값(+5 = 11)에 대한 이동평균을 구하고자  
 window의 크기를 11로 선정하였다.(기준이 되는 샘플 1개와 전후값 10개의 평균.)  
 그리고 해당 given prediction에 매칭되는 value에서 이동평균을 감한다.  
+  
+  
 ```python
-data["value"][a번째] - data.rolling(window=11, center=True).mean()
-```
-
+duplicate_val = []
+for element in data["value"][data["is_anomaly"]==True]:
+    if element in data["value"][data["is_anomaly"]==False]:
+        duplicate_val.append(element)
+```  
 <img src="/images/fulls/duplicate.jpg" class="fit image">  
   
-
+  
 위의 그림은 True인 value들과 False인 value들 간 중복되는 개수를 구한 것이다.  
 735개의 중복되는 샘플들이 존재한다. 이는 SVC의 학습을 조금 어렵게 할 것이다.  
 왜? 같은 20이라는 값을 두고 어떤 경우는 정상,  
@@ -140,10 +193,27 @@ data["value"][a번째] - data.rolling(window=11, center=True).mean()
 확실하게 분류해줄 수 있다면 모델의 학습에 크게 도움이 될 것이다.  
   
   
-<img src="/images/fulls/datapr_code.jpg" class="fit image">  
+```python
+window = 11
+mv_pred = data["predicted"].rolling(window=window, center=True).mean()
+for i in range(window-2):
+    mv_pred[i] = data["predicted"][i]
+    mv_pred[len(data["predicted"])-(i+1)] = data["predicted"][len(data["predicted"])-(i+1)]
+
+x, y = [], []
+for num in range(len(data)):
+    elem_1 = np.sqrt(data["value"][num]**2 + data["predicted"][num]**2)
+    elem_2 = abs(data["value"][num] - mv_pred[num])
+    x.append([elem_1, elem_2])
+    if data["is_anomaly"][num]==True:
+        y.append(1)
+    else:
+        y.append(0)
+x = np.array(x)
+```  
 <img src="/images/fulls/datapr_renew.jpg" class="fit image">  
   
-
+  
 중복되는 값들을 확실하게 분류할 수 있는 방법으로 "거리"를 떠올렸다.  
 각각의 샘플에 대하여, 원점으로부터 떨어진 거리로 표현한다면((value, distance)의 좌표를 갖는.),  
 단 하나의 값도 중복되지 않는다.  
@@ -155,6 +225,13 @@ data["value"][a번째] - data.rolling(window=11, center=True).mean()
 조금 더 나은 결과를 가져올 것이라고 생각된다.  
   
 
+```python
+svc = SVC(class_weight={0:low_weight, 1:high_weight})
+svc.fit(x, y)
+cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=42)
+scores = cross_val_score(svc, x, y, scoring='roc_auc', cv=cv, n_jobs=-1)
+print('Mean ROC AUC: %.3f'%mean(scores))
+```  
 <img src="/images/fulls/rocauc.jpg" class="fit image">  
 <img src="/images/fulls/final_graph.jpg" class="fit image">
   
