@@ -1,8 +1,8 @@
 ---
 layout: post
 ---
-<!-- <img src="/images/fulls/modified_resnet.jpg" class="fit image">
-<br/> -->
+<img src="/images/fulls/ecg_bg.jpg" class="fit image">
+<br/>
 
 # 심전도 데이터(ElectroCardioGram, ECG)  
 ---
