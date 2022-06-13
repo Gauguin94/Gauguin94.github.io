@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 변형 ResNet을 사용한 ECG 데이터 분류
-date: 2022-06-13T14:37:44.000Z
+title: Suspendisse pellentesque
+date: 2015-02-06T14:37:44.000Z
 categories: update
 ---
 
