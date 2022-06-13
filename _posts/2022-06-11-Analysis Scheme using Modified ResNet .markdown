@@ -5,6 +5,7 @@ layout: post
 <br/>
 
 # 심전도 데이터(ElectroCardioGram, ECG)  
+# 석사 개인 연구
 ---
 <br/>
 <img src="/images/fulls/ecg_sample.jpg" style="width:537px; height:422px;">

@@ -6,6 +6,7 @@ layout: post
 바칼 - 죤씨나
 
 # 시간대별 강화 성공 비율을 확인해보자.
+# 토이 프로젝트
 <img src="/images/fulls/yd_log.jpg" style="width:706x; height:363px;">  
 
 > 친구 중에 정말 불쌍한 친구가 있었다...  
