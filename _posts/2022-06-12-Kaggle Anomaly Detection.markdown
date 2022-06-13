@@ -18,7 +18,8 @@ layout: post
 print(data.info())
 print(data)
 ```  
-<img src="/images/fulls/data_info.jpg" class="fit image">  
+<img src="/images/fulls/data_info.jpg" style="width:342px; height:468px;">  
+<!-- <img src="/images/fulls/data_info.jpg" class="fit image">  -->
   
   
 데이터는 다음과 같이 이루어져 있다.  
