@@ -1,10 +1,11 @@
 ---
 layout: post
 ---
-<img src="/images/fulls/modified_resnet.jpg" class="fit image">
-<br/>
+<!-- <img src="/images/fulls/modified_resnet.jpg" class="fit image">
+<br/> -->
 
 # 심전도 데이터(ElectroCardioGram, ECG)  
+---
 <br/>
 <img src="/images/fulls/ecg_sample.jpg" style="width:537px; height:422px;">
 <br/>
@@ -36,12 +37,13 @@ MIT-BIH와 관련된 데이터는, train data 87,554개와 test data 21,892개�
 레이블을 제외한 샘플 내 데이터는 심전도의 time step에 대응되는 값,  
 즉, 파형(wave)에 대한 정보이다. (ex) ecg[:181])  
 각 레이블의 정보는 아래와 같다.  
-<img src="/images/fulls/data_detail.jpg" class="fit image">
+<img src="/images/fulls/data_detail.jpg" style="width:675px; height:713px;">
 <br/>
 
 # 모델 구현
+---
 ## 미리보는 전체 구조 그림 및 테이블  
-<img src="/images/fulls/before_abs.jpg" class="fit image">  
+<img src="/images/fulls/before_abs.jpg" style="width:821px; height:690px;">  
 <br/>  
   
 ## ResNet & ResNeXt   
@@ -54,14 +56,14 @@ ResNeXt의 기법을 사용하였기 때문인데, 나뉘어진 입력 혹은 �
 
 ## Proposed Connection
 <br/>
-<img src="/images/fulls/ex_image_1.jpg" class="fit image">  
+<img src="/images/fulls/ex_image_1.jpg" style="width:830px; height:492px;">  
 미리보는 전체 구조 그림에서, "proposed connection"이라고 표시된 부분이 보인다.  
 proposed connection을 이야기하기 전에 짚고 넘어가야할 것이 있다.  
 보편적으로 사용되는 합성곱 연산(conv2d)에서는 위와 같은 기준을 갖고 연산이 진행된다.  
 하지만 필자는 conv1d를 사용하였고, conv1d에서의 연산은 아래와 같이 진행된다.  
 각 샘플에서의 time-step이 height에 해당한다!  
 <br/>
-<img src="/images/fulls/ex_image_2.jpg" class="fit image">  
+<img src="/images/fulls/ex_image_2.jpg" style="width:564px; height:465px;">  
 proposed connection은 제일 처음으로 모델에 들어오는 입력을  
 표시된 각 부분에 전달하는 역할을 한다.  
 각 부분에 전달된 값들은 그 부분에 존재하는,  
@@ -88,6 +90,7 @@ feature map(h(x))들을 concatenation하여
 <br/>
 
 # 결과
+---
 <br/>
 <img src="/images/fulls/result.jpg" style="width:403px; height:200px;">  
 위 사진은 분류 정확도, 민감도(재현율), 정밀도,  
