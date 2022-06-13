@@ -139,13 +139,6 @@ adv_url.append(RAW_URL + url.attrs['href']) 을 통해
 
 # 끌어온 캐릭터의 로그 요청하기(to Neople)
 ```python
-class filtering:
-    def __init__(self):
-        pass
-```  
-filtering 클래스는 dataLoad, deldupl, getInfo, run 메소드로 구성되어 있다.  
-
-```python
     def getInfo(self):
         char_list = []
         error_count = 0
