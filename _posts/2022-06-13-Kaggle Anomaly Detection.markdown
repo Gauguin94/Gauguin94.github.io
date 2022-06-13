@@ -73,11 +73,9 @@ corr_matrix["is_anomaly"].sort_values(ascending=False)
 > 시간에 대한 상관도는 매우 옅기 때문에 given prediction과 value에 중점을 두고  
 > 모델이 추론할 수 있도록 데이터 전처리를 진행하겠다.  
 > 먼저, 모델은 아래와 같은 Pipeline을 거친다.  
-  
 > 1. 데이터 전처리  
 > 2. Support Vector Classifier를 사용한 train set 학습 및 StratifiedKFold를 사용한 validation set 추론 (학습 및 검증)
-> 3. fit된 SVC를 이용한 test set 추론  
-
+> 3. fit된 SVC를 이용한 test set 추론
 ```python
 x, y = [], []
 for num in range(len(data)):
