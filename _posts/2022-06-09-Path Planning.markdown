@@ -58,6 +58,8 @@ layout: post
 <img src="/images/fulls/bspline.jpg" style="width:307px; height:202px;">  
 
 >> 하지만 생성되는 경로의 변화가 심하고 차량의 방향이  
->> 특정되지 않는 문제가 있어 B-spline smoothing,  
->> 생성된 경로를 차량 동역학이 적용된 경로와 비슷하게  
->> 만들어 줄 수 있도록 경로 평활화를 사용하였다.  
+>> 특정되지 않는 문제가 있어  
+>> B-spline smoothing을 사용하였다.  
+>> B-spline smoothing은 생성된 경로를  
+>> 차량 동역학이 적용된 경로와 비슷하게  
+>> 만들어준다.    
