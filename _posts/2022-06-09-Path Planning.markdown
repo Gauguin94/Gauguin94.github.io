@@ -54,6 +54,7 @@ layout: post
 >> 점 로봇으로 경로를 탐색하면 상태가 로봇의 위치와 방향으로,  
 >> 즉, (x좌표값, y좌표값, 차량방향)의 세 값으로  
 >> 단순화된다는 장점이 있다.  
+  
 <img src="/images/fulls/bspline.jpg" style="width:307px; height:202px;">  
 
 >> 하지만 생성되는 경로의 변화가 심하고 차량의 방향이  
