@@ -18,6 +18,7 @@ layout: post
 
 ## MIT-BIH 부정맥 데이터베이스(MIT-BIH arrhythmia DB)
 [ECG Dataset](https://www.kaggle.com/datasets/shayanfazeli/heartbeat)  
+<img src="/images/fulls/data_abs.jpg" style="width:394px; height:174px;">
 <br/>
 MIT-BIH 부정맥 데이터베이스는 Beth Israel Deaconess Medical Center(hospital, BIH)와  
 MIT에서 1975년부터 1979년까지 시행한 연구에서부터 얻어낸 4,000개 이상의  
@@ -27,7 +28,7 @@ MIT에서 1975년부터 1979년까지 시행한 연구에서부터 얻어낸 4,0
 랜덤하게 실제 환자 23명의 기록을 선택하고, 주요 증상을 갖는 25명의 기록,  
 총 48명의 기록으로 구성된 데이터베이스이다.  
 <br/>
-<img src="/images/fulls/data_abs.jpg" style="width:394px; height:174px;">
+<img src="/images/fulls/data_detail.jpg" style="width:675px; height:713px;">
 <br/>
 DB 다운로드 링크를 통해 데이터셋을 다운로드 받으면,  
 MIT-BIH와 관련된 데이터는, train data 87,554개와 test data 21,892개로 구성되어 있다.  
@@ -37,7 +38,6 @@ MIT-BIH와 관련된 데이터는, train data 87,554개와 test data 21,892개�
 레이블을 제외한 샘플 내 데이터는 심전도의 time step에 대응되는 값,  
 즉, 파형(wave)에 대한 정보이다. (ex) ecg[:181])  
 각 레이블의 정보는 아래와 같다.  
-<img src="/images/fulls/data_detail.jpg" style="width:675px; height:713px;">
 <br/>
 
 # 모델 구현
