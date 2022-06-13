@@ -125,7 +125,7 @@ for num in range(len(test)):
 test_x = np.array(test_x)
 result = svc.predict(test_x)
 ```  
-<img src="/images/fulls/origin_graph.jpg" class="fit image">  
+<img src="/images/fulls/origin_graph_contrast.jpg" class="fit image">  
 <img src="/images/fulls/origin_result.jpg" class="fit image">  
   
   
