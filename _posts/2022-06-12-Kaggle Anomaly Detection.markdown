@@ -41,7 +41,8 @@ test set는 is_anomaly column만이 존재하며 공란으로 되어있다.(우�
 print(len(data["is_anomaly"][data["is_anomaly"]==False]))
 print(len(data["is_anomaly"][data["is_anomaly"]==True]))
 ```  
-<img src="/images/fulls/train_consist.jpg" class="fit image">  
+<!-- <img src="/images/fulls/train_consist.jpg" class="fit image">   -->
+<img src="/images/fulls/train_consist.jpg" style="width:165px; height:42px;">
   
   
 train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 있다.  
