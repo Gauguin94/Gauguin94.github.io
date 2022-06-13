@@ -4,7 +4,7 @@ layout: post
 <img src="/images/fulls/02.jpg" class="fit image">  
 
 
-## **대회 개요**  
+# **대회 개요**  
 <br/>
 
 [Anomaly Detection - Kaggle](https://www.kaggle.com/c/anomaly-detection)
@@ -51,7 +51,7 @@ train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 �
 하지만 이는 바람직하지 않다. 고객은 정상 데이터보다 비정상 데이터에 더 관심을 갖기 때문이다.  
 
 
-## **무지성 도전**  
+# **무지성 도전**  
 <br/>
 
 ```python
@@ -141,7 +141,7 @@ given prediction에 따른 value로 표현한 그래프이며
 그리하여 어떻게 데이터 전처리를 해볼까 궁리해본 결과...  
   
   
-## **지성 도전**  
+# **지성 도전**  
 <br/>  
   
 <img src="/images/fulls/mv.jpg" style="width:377px; height:262px;">  
@@ -242,7 +242,7 @@ ROC 곡선 아래의 영역이 0.915로 이전보다는 낮지만
 각 벡터들이 좀 더 분류하기 쉽도록 퍼져 있음을 확인할 수 있다.  
   
   
-## **끝마치며**
+# **끝마치며**
 <br/>
 
 <img src="/images/fulls/second_score.jpg" class="fit image">  
@@ -258,9 +258,9 @@ ROC 곡선 아래의 영역이 0.915로 이전보다는 낮지만
 연구가 이뤄져 왔던 Support Vector Machine이다.  
 새로운 모델의 개발, 혹은 SOTA 모델을 가져와서 fine-tuning을  
 행한게 아니라 데이터 자체를 학습에 용이하도록 변환하는 것에 초점을 맞췄다.  
-# 즉, 가장 중요한 것은 주어진 데이터를  
-# 주어진 상황에 맞게끔 변환할 수 있는 능력과  
-# 주어진 데이터에 대한 이해일 것이다.  
+## 즉, 가장 중요한 것은 주어진 데이터를  
+## 주어진 상황에 맞게끔 변환할 수 있는 능력과  
+## 주어진 데이터에 대한 이해일 것이다.  
 <br/>
 <br/>
 <br/>
