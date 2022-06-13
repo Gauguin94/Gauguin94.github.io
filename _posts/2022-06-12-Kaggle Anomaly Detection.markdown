@@ -165,12 +165,11 @@ time sequence 데이터이기 때문에 시간을 완전히 배제하는 것은 
   
   
 ```python
-data["value"][a번째] - data.rolling(window=11, center=True).mean()
+data["value"][num] - (data.rolling(window=11, center=True).mean())[num]
 ```  
   
-
-given prediction에 대해("predicted" column에 해당하는 값들.)  
-window 11의 이동평균을 적용하겠다.  
+위와 같은 방식으로 (예를 든 것이다. 문법 상 맞지 않다.)  
+given prediction에 대해("predicted" column에 해당하는 값들.) window 11의 이동평균을 적용하겠다.  
 a라는 값이 있다면 그 a라는 값과(+1), a라는 값 이전 5개의 값(+5),  
 그리고 a라는 값 이후의 5개의 값(+5 = 11)에 대한 이동평균을 구하고자  
 window의 크기를 11로 선정하였다.(기준이 되는 샘플 1개와 전후값 10개의 평균.)  
