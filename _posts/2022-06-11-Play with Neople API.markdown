@@ -4,7 +4,7 @@ layout: post
 <img src="/images/fulls/johncena.png" style="width:200px; height:230px;">
 
 # 시간대별 강화 성공 비율을 확인해보자.
-<img src="/images/fulls/yd_log.png" style="width:706x; height:363px;">  
+<img src="/images/fulls/yd_log.jpg" style="width:706x; height:363px;">  
 
 친구 중에 정말 불쌍한 친구가 있었다...  
 이 친구는 13강화 도전을 36번 실패했다...  
