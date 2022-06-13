@@ -19,7 +19,6 @@ print(data.info())
 print(data)
 ```  
 <img src="/images/fulls/data_info.jpg" style="width:342px; height:468px;">  
-<!-- <img src="/images/fulls/data_info.jpg" class="fit image">  -->
   
   
 데이터는 다음과 같이 이루어져 있다.  
@@ -41,8 +40,7 @@ test set는 is_anomaly column만이 존재하며 공란으로 되어있다.(우�
 print(len(data["is_anomaly"][data["is_anomaly"]==False]))
 print(len(data["is_anomaly"][data["is_anomaly"]==True]))
 ```  
-<!-- <img src="/images/fulls/train_consist.jpg" class="fit image">   -->
-<img src="/images/fulls/train_consist.jpg" style="width:165px; height:42px;">
+<img src="/images/fulls/train_consist.jpg" style="width:165px; height:42px;">  
   
   
 train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 있다.  
@@ -58,7 +56,7 @@ train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 �
 corr_matirx = data.corr()
 corr_matrix["is_anomaly"].sort_values(ascending=False)
 ```  
-<img src="/images/fulls/data_corr.jpg" class="fit image">  
+<img src="/images/fulls/data_corr.jpg" style="width:235px; height:92px;">  
   
   
 value와 is_anomaly column 간 상관관계가 가장 높음을 확인할 수 있다.  
@@ -111,7 +109,7 @@ cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=42)
 scores = cross_val_score(svc, x, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f'%mean(scores))
 ```  
-<img src="/images/fulls/origin_fit.jpg" class="fit image">  
+<img src="/images/fulls/origin_fit.jpg" style="width:142px; height:20px;">  
   
   
 ROC 곡선 아래의 영역이 0.933으로 언뜻 보기에 높은 값이 산출되었다.  
@@ -145,7 +143,7 @@ given prediction에 따른 value로 표현한 그래프이며
 ## **지성 도전**  
   
   
-<img src="/images/fulls/mv.jpg" class="fit image">  
+<img src="/images/fulls/mv.jpg" style="width:377px; height:262px;">  
   
   
 이동평균이란 무엇인가?  
@@ -185,7 +183,7 @@ for element in data["value"][data["is_anomaly"]==True]:
     if element in data["value"][data["is_anomaly"]==False]:
         duplicate_val.append(element)
 ```  
-<img src="/images/fulls/duplicate.jpg" class="fit image">  
+<img src="/images/fulls/duplicate.jpg" style="width:31px; height:22px;">  
   
   
 위의 그림은 True인 value들과 False인 value들 간 중복되는 개수를 구한 것이다.  
@@ -234,7 +232,7 @@ cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=42)
 scores = cross_val_score(svc, x, y, scoring='roc_auc', cv=cv, n_jobs=-1)
 print('Mean ROC AUC: %.3f'%mean(scores))
 ```  
-<img src="/images/fulls/rocauc.jpg" class="fit image">  
+<img src="/images/fulls/rocauc.jpg" style="width:146px; height:25px;">  
 <img src="/images/fulls/final_graph.jpg" class="fit image">
   
   
