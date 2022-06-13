@@ -5,8 +5,7 @@ layout: post
 
 
 # **대회 개요**  
-<br/>
-
+---
 [Anomaly Detection - Kaggle](https://www.kaggle.com/c/anomaly-detection)
 
 
@@ -52,6 +51,7 @@ train set은 정상 샘플 15,054개, 비정상 샘플 776개로 구성되어 �
 
 
 # **무지성 도전**  
+---
 <br/>
 
 ```python
@@ -142,6 +142,7 @@ given prediction에 따른 value로 표현한 그래프이며
   
   
 # **지성 도전**  
+---
 <br/>  
   
 <img src="/images/fulls/mv.jpg" style="width:377px; height:262px;">  
@@ -243,6 +244,7 @@ ROC 곡선 아래의 영역이 0.915로 이전보다는 낮지만
   
   
 # **끝마치며**
+---
 <br/>
 
 <img src="/images/fulls/second_score.jpg" class="fit image">  
