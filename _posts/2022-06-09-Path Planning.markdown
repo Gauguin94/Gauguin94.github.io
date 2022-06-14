@@ -43,7 +43,7 @@ layout: post
 > 구조를 효율적으로 파악한다.  
 ## RRT*
 ---
-<img src="/images/fulls/rrtstar_pseudo.jpg" style="width:284px; height:175px;"> 
+<img src="/images/fulls/rrtstar_pseudo.jpg" style="width:567px; height:350px;"> 
 
 >> 경로계획에 사용되는 알고리즘은 RRT*로 선정하였다.  
 >> RRT*는 RRT(Rapidly-exploring Random Tree) 알고리즘의  
