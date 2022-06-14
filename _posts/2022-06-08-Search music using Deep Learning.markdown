@@ -4,7 +4,7 @@ layout: post
 <img src="/images/fulls/chroma_feature.jpg" style="width:342px; height:300px;">  
 
 # 기업 참여형 국가 연구 과제  
-# (대외비 특성상 일부 서술)  
+## (대외비 특성상 일부 서술)  
 ---
 > 연구 보조원의 역할(참여율: 22.5%)로  
 > '딥러닝을 활용한 고속 음악 탐색 기술 개발'이라는  

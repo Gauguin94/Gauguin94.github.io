@@ -4,7 +4,7 @@ layout: post
 <img src="/images/fulls/sketchup.jpg" style="width:513; height:143px;">  
 
 # 기업 참여형 국가 연구 과제  
-# (대외비 특성상 일부 서술)  
+## (대외비 특성상 일부 서술)  
 ---
 > '스마트폰 기반 사물인식 및 Waypoint를 적용한  
 > 농축산 E-mobility 상용화 기술 개발'이라는 주제의  
