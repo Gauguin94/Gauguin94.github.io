@@ -153,7 +153,7 @@ result = svc.predict(test_x)
 <img src="/images/fulls/mv.jpg" style="width:377px; height:262px;">  
   
   
-> 이동평균이란 무엇인가?  
+> 이동평균(moving average)이란 무엇인가?  
 > 이동평균은 말 그대로 일정 length(보통 window라고 표현.)를 기준으로  
 > 전체 구간에서 특정 구간을 이동하며 window 크기만큼의 구간의 평균을 구하는 것이다.  
 > 이는 주식에서 시세 동향선을 나타내거나, 구간을 smoothing할 때 쓰일 수 있다.  
