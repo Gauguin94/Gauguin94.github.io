@@ -1,7 +1,7 @@
 ---
 layout: post
 ---
-<img src="/images/fulls/path_bg.PNG" style="width:396px; height:385px;">  
+<img src="/images/fulls/sketchup.jpg" style="width:513; height:143px;">  
 
 # 기업 참여형 국가 연구 과제  
 # (일부 서술)  
@@ -28,7 +28,9 @@ layout: post
 > 이 중 복잡하고 높은 차원의 문제에 대한 해를  
 > 적은 계산량으로 산출할 수 있는  
 > Sampling 기반의 경로 계획 방식이 선호된다.  
-<!-- [그림] -->
+
+<img src="/images/fulls/rrtstar_ex.jpg" style="width:411px; height:491px;"> 
+
 > 샘플링 기반의 경로계획은 형상공간(configuration space)을  
 > 격자(grid)로 분할하지 않고,  
 > 랜덤하게 샘플링 하여 샘플점(sample point)을  
@@ -41,13 +43,16 @@ layout: post
 > 구조를 효율적으로 파악한다.  
 ## RRT*
 ---
-<!-- [그림] -->
+<img src="/images/fulls/rrtstar_pseudo.jpg" style="width:284px; height:175px;"> 
+
 >> 경로계획에 사용되는 알고리즘은 RRT*로 선정하였다.  
 >> RRT*는 RRT(Rapidly-exploring Random Tree) 알고리즘의  
 >> 개선된 버전으로, 트리 재생성 및 연결(tree rewiring),  
 >> **최근접 이웃 탐색(Nearest Neighbor Search)**이라고 하는  
 >> 기능을 도입하여 경로 탐색 품질을 개선한 경로계획 알고리즘이다.  
-<!-- [그림] -->
+
+<img src="/images/fulls/path_ex.jpg" style="width:189px; height:189px;">
+
 >> 완성된 경로계획 모듈을 시연하기 위하여  
 >> 만들어진, 혹은 제공된 지도에서 경로계획이 적용되는 로봇은  
 >> 점 로봇(point robot)으로 모델링하였다.(SketchUp 이용)  
@@ -61,5 +66,4 @@ layout: post
 >> 특정되지 않는 문제가 있어  
 >> B-spline smoothing을 사용하였다.  
 >> B-spline smoothing은 생성된 경로를  
->> 차량 동역학이 적용된 경로와 비슷하게  
->> 만들어준다.    
+>> 차량 동역학이 적용된 경로와 비슷하게 만들어준다.  
