@@ -8,9 +8,10 @@ layout: post
 **확인하실 수 있습니다.**  
 
 # 던전앤파이터란 무슨 의미인가요?
----
+
 <img src="/images/fulls/adven.jpg" style="width:292px; height:111px;">  
 <strong>바칼 - 죤씨나, 바티스따, 렌디오턴, 드웨인좐슨, 성게의버프</strong>
+---
 
 ## 던파는 '희로애락을 함께하는 벗'입니다.<br/>
 <br/>
