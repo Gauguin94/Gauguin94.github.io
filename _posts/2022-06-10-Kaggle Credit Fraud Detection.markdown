@@ -81,7 +81,7 @@ layout: post
 > ## **대략적인 흐름**  
 ---
 <img src="/images/fulls/lstm_ae.png" style="width:785px; height:538px;">  
-
+  
 >> 일반 오토인코더가 아닌 CNN에서의 Convolution과 LSTM을 결합한 오토인코더를  
 >> 설계하여 데이터 분석을 진행한다.(Convolutional Recurrent Neural Network, CRN)  
 >> 입력이 되는 데이터는 Convolution layer를 지나 첫 번째 LSTM을 거치게 된다.  
@@ -97,8 +97,8 @@ layout: post
 >>> 인코더를 통해 원래 데이터를 Convolution 연산과 LSTM으로 함축시키게 된다.  
 >>>  
 >>> **함축?**  
-<img src="/images/fulls/conv.JPG" style="width:381px; height:230px;">
-
+<img src="/images/fulls/conv.JPG" style="width:381px; height:230px;">  
+  
 >>> 보통, 합성곱 연산이라고 하면, Convolution에 의한 연산,  
 >>> 즉, filtering과 stride, pooling에 의해  
 >>> feature map의 크기가 점차 줄어 들게 된다.  
