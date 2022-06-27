@@ -52,4 +52,11 @@ layout: post
   
 # **도전**
 ---
+<img src="/images/fulls/ae_pic.png" style="width:959px; height:449px;">  
 
+> 이상치를 탐지하는 전형적인 방법들은  
+> z-score를 통한 판단, K-nearest neighbor, k-means, isolation forest 등  
+> 지도학습과 비지도학습을 아울러 여러 가지가 존재한다.  
+> 그 중에서 가장 매력적인 방법이라고 생각되는 Auto Encoder(오토 인코더)를  
+> 사용하여 데이터 분석을 진행하였다.  
+> 
