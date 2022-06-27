@@ -88,6 +88,9 @@ layout: post
 >> **(인코더 부분)**  
 >> 첫 번째 LSTM을 통해 만들어진 **Latent Vector**가 두 번째 LSTM과  
 >> Convoluional Transpose Layer를 지나 원래의 데이터에 가깝게 복원이 된다.  
+>> 인코딩 부분과는 다르게 디코딩 과정에만 dropout과  
+>> Batch Normalization과 같은 규제를 추가하였다.  
+>> 이와 같이 설계한 이유는 **조금 자세하게? TMI** 부분에서 후술하겠다.  
 >> **(디코더 부분)**  
 >> ### **Latent Vector**  
 >>> Latent Vector는 오토인코더의 인코더 부분에서 출력되는 feature map이다.  
@@ -117,4 +120,6 @@ layout: post
 >
 > ## **조금 자세하게? TMI**
 ---
->
+>> 1. LSTM과 Convolution을 같이 사용한 이유.  
+>> 2. 디코딩 부분에서만 규제를 사용한 이유.  
+>> 3. 활성화 함수로 사용한 "SoftSign".  
