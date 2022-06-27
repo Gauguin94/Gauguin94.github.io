@@ -93,6 +93,8 @@ layout: post
 >>> Latent Vector는 오토인코더의 인코더 부분에서 출력되는 feature map이다.  
 >>> 인코더를 통해 원래 데이터를 Convolution 연산과 LSTM으로 함축시키게 된다.  
 >>> **함축?**  
+<img src="/images/fulls/conv.JPG" style="width:381px; height:230px;"> 
+
 >>> 보통, 합성곱 연산이라고 하면, Convolution에 의한 연산,  
 >>> 즉, filtering과 stride, pooling에 의해  
 >>> feature map의 크기가 점차 줄어 들게 된다.  
