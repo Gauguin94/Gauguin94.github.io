@@ -116,6 +116,6 @@ layout: post
 > ## **조금 자세하게? TMI**
 ---
 >> 1. **LSTM과 Convolution을 같이 사용한 이유.**  
->> <img src="/images/fulls/conv.JPG" style="width:381px; height:230px;">  
+>> <img src="/images/fulls/lstm_cell.JPG" style="width:388px; height:275px;">  
 >> 2. **디코딩 부분에서만 규제를 사용한 이유.**  
 >> 3. **활성화 함수로 사용한 "SoftSign".**  
