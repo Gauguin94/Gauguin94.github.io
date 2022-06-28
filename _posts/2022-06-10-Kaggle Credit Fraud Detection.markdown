@@ -145,4 +145,4 @@ layout: post
 >> 원래의 데이터를 복원하는 역할을 하기 때문에  
 >> 과대적합(Overfitting)이 일어나지 않게 만들기 위하여  
 >> dropout과 batch normalization을 사용하였다.  
->> **Latent Vector의 추출은 쉽게! 복원(학습)은 어렵게!**  
+>> **Latent Vector의 추출은 쉽게! 복원은 어렵게!**  
