@@ -121,7 +121,8 @@ layout: post
 >> Convolution을 사용하여 데이터의 차원을 줄이고(사진에서는 8에서 5.)  
 >> conv를 통과한 텐서 내 원소 각각 n 개의 수치로 표현한다.  
 >> (사진을 예시로, x<sub>1</sub>은 [11, 14, 14]로 표현됨, n=3)  
->> X를 살펴보자. X 내 '2'가 3개 존재한다.  
+>> 매우 직관적으로 설명해보자면,  
+>> X 내 '2'가 3개 존재한다.  
 >> X가 이상 샘플이면서 숫자 '2'에 의해  
 >> 이상 샘플로 분류되었다고 가정해보자.  
 >> 모든 '2'에 의해서 이상 샘플로 분류된 것이 아니고  
@@ -131,4 +132,20 @@ layout: post
 >> 설계한 모델에서는 n=8로 진행하였다.  
 >>   
 >> 2. **디코딩 부분에서만 규제를 사용한 이유.**  
+>> <img src="/images/fulls/dont_drop.JPG" style="width:352px; height:319px;">  
+>> 인코딩 부분에서 dropout 및 batch normalization을  
+>> 사용한다면, 온전한 Latent Vector가 추출되지 않을 수 있다.  
+>> (dropout과정에서 node들을 확률적으로 사용하기 때문에  
+>> 인코딩 부분에서 dropout을 수행하게 되면 특정 node들이  
+>> 활성화 되지 않은 vector가 추출될 수 있다.  
+>> ex) [1, 2, 3, 2, 1] -> dropout -> [1, 0, 3, 2, 0])  
+>> batch normalization 또한 regularization의  
+>> 효과가 있기 때문에 인코딩 부분에서 사용하지 않았다.  
+>> 디코딩 부분은 Latent Vector를 기반으로  
+>> 원래의 데이터를 복원하는 역할을 하기 때문에  
+>> 과대적합(Overfitting)이 일어나지 않게 만들기 위하여  
+>> dropout과 batch normalization을 사용하였다.  
+>> **Latent Vector의 추출은 쉽게! 복원(학습)은 어렵게!**  
+>>   
 >> 3. **활성화 함수로 사용한 "SoftSign".**  
+>> 
