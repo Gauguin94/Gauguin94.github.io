@@ -75,7 +75,7 @@ layout: post
 > 진행하지 못할 것이라는 기대를 할 수 있다.  
 > 
 > ## **대략적인 흐름**  
----
+> ---
 >> <img src="/images/fulls/lstm_ae.png" style="width:785px; height:538px;">  
 >> 일반 오토인코더가 아닌 CNN에서의 Convolution과 LSTM을 결합한 오토인코더를  
 >> 설계하여 데이터 분석을 진행한다.(Convolutional Recurrent Neural Network, CRN)  
@@ -129,7 +129,7 @@ layout: post
 >> 2번째(5행) '2'에 의해 이상 샘플로 분류되었다고 했을 떄,  
 >> 같은 '2'라도 서로 다르게 표현해야 할 것이다.  
 >> 그리하여 위와 같은 작업을 수행하였으며,  
->> 설계한 모델에서는 n=8로 진행하였다.  
+>> 설계한 모델에서는 n=8로 진행하였다.(conv에서의 channel)  
 >>   
 >> 2. **디코딩 부분에서만 규제를 사용한 이유.**  
 >> <img src="/images/fulls/dont_drop.JPG" style="width:352px; height:319px;">  
@@ -146,6 +146,3 @@ layout: post
 >> 과대적합(Overfitting)이 일어나지 않게 만들기 위하여  
 >> dropout과 batch normalization을 사용하였다.  
 >> **Latent Vector의 추출은 쉽게! 복원(학습)은 어렵게!**  
->>   
->> 3. **활성화 함수로 사용한 "SoftSign".**  
->> 
