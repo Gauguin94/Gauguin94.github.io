@@ -14,8 +14,7 @@ layout: post
 >  
 > ## **데이터 개요**
 ---
-<img src="/images/fulls/data_shape.png" style="width:933px; height:100px;">    
-  
+>> <img src="/images/fulls/data_shape.png" style="width:933px; height:100px;">  
 >> 284,807 건의 거래 중 사기(이상치) 거래는 단 "492"건만이 존재한다.  
 >> 이를 퍼센티지로 따지면 0.172%이다.  
 >> 데이터들의 Feature는 Time, V1 ~ V28, Amount, Class이다.  
@@ -32,8 +31,7 @@ layout: post
 >
 > ## **데이터 간단히 살펴보기**
 ---
-<img src="/images/fulls/data_corr.png" style="width:85px; height:369px;">    
-  
+>> <img src="/images/fulls/data_corr.png" style="width:85px; height:369px;">  
 >> 필자가 생각하기에는, 거래와 같은 이상 탐지에서는  
 >> "시간"이라는 특성이 매우 큰 영향을 끼친다고 생각한다.  
 >> 예를 들어, 어제까지 10년간 하루에 100원만 쓰던 사람이 갑자기  
@@ -51,8 +49,7 @@ layout: post
   
 # **도전**
 ---
-<img src="/images/fulls/ae_pic.png" style="width:959px; height:449px;">    
-  
+> <img src="/images/fulls/ae_pic.png" style="width:959px; height:449px;">  
 > 이상치를 탐지하는 전형적인 방법들은  
 > z-score를 통한 판단, K-nearest neighbor, k-means, isolation forest 등  
 > 지도학습과 비지도학습을 아울러 여러 가지가 존재한다.  
@@ -79,8 +76,7 @@ layout: post
 > 
 > ## **대략적인 흐름**  
 ---
-<img src="/images/fulls/lstm_ae.png" style="width:785px; height:538px;">    
-    
+>> <img src="/images/fulls/lstm_ae.png" style="width:785px; height:538px;">  
 >> 일반 오토인코더가 아닌 CNN에서의 Convolution과 LSTM을 결합한 오토인코더를  
 >> 설계하여 데이터 분석을 진행한다.(Convolutional Recurrent Neural Network, CRN)  
 >> 입력이 되는 데이터는 Convolution layer를 지나 첫 번째 LSTM을 거치게 된다.  
@@ -96,8 +92,7 @@ layout: post
 >>> 인코더를 통해 원래 데이터를 Convolution 연산과 LSTM으로 함축시키게 된다.  
 >>>  
 >>> **함축?**  
-<img src="/images/fulls/conv.JPG" style="width:381px; height:230px;">  
-  
+>>> <img src="/images/fulls/conv.JPG" style="width:381px; height:230px;">  
 >>> 보통, 합성곱 연산이라고 하면, Convolution에 의한 연산,  
 >>> 즉, filtering과 stride, pooling에 의해  
 >>> feature map의 크기가 점차 줄어 들게 된다.  
@@ -120,6 +115,7 @@ layout: post
 >
 > ## **조금 자세하게? TMI**
 ---
->> 1. LSTM과 Convolution을 같이 사용한 이유.  
->> 2. 디코딩 부분에서만 규제를 사용한 이유.  
->> 3. 활성화 함수로 사용한 "SoftSign".  
+>> 1. **LSTM과 Convolution을 같이 사용한 이유.**  
+>> <img src="/images/fulls/conv.JPG" style="width:381px; height:230px;">  
+>> 2. **디코딩 부분에서만 규제를 사용한 이유.**  
+>> 3. **활성화 함수로 사용한 "SoftSign".**  
