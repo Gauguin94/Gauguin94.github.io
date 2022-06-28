@@ -116,6 +116,11 @@ layout: post
 > ## **조금 자세하게? TMI**
 ---
 >> 1. **LSTM과 Convolution을 같이 사용한 이유.**  
->> <img src="/images/fulls/lstm_cell.JPG" style="width:388px; height:275px;">  
+>> 일반적으로, RNN과 LSTM 같은 모델에 문자를 입력으로 할 때,  
+>> 우리는 One-hot encoding을 사용한다.  
+>> 위의 사진은 One-hot encoding을 경우에 맞지 않게 사용한 경우와  
+>> 옳게 사용한 경우를 나타낸 것이다.  
+>> 'H'와 'h'를 같은 벡터로 취급한다면 당연히 모델도  
+>> 이에 대해 분류할 수 없을 것이다.  
 >> 2. **디코딩 부분에서만 규제를 사용한 이유.**  
 >> 3. **활성화 함수로 사용한 "SoftSign".**  
