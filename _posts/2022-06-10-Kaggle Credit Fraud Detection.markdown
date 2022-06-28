@@ -13,7 +13,7 @@ layout: post
 > 하는 것이 중요하다.  
 >  
 > ## **데이터 개요**
----
+> ---
 >> <img src="/images/fulls/data_shape.png" style="width:933px; height:100px;">  
 >> 284,807 건의 거래 중 사기(이상치) 거래는 단 "492"건만이 존재한다.  
 >> 이를 퍼센티지로 따지면 0.172%이다.  
@@ -30,7 +30,7 @@ layout: post
 >> 위 사진은 상위 샘플 5개를 나타낸 것이다.
 >
 > ## **데이터 간단히 살펴보기**
----
+> ---
 >> <img src="/images/fulls/data_corr.png" style="width:85px; height:369px;">  
 >> 필자가 생각하기에는, 거래와 같은 이상 탐지에서는  
 >> "시간"이라는 특성이 매우 큰 영향을 끼친다고 생각한다.  
@@ -48,7 +48,7 @@ layout: post
 >> **(위의 사진이 Class와 다른 Feature 간 상관도를 나타낸다.)**
   
 # **도전**
----
+> ---
 > <img src="/images/fulls/ae_pic.png" style="width:959px; height:449px;">  
 > 이상치를 탐지하는 전형적인 방법들은  
 > z-score를 통한 판단, K-nearest neighbor, k-means, isolation forest 등  
@@ -87,6 +87,10 @@ layout: post
 >> Batch Normalization과 같은 규제를 추가하였다.  
 >> 이와 같이 설계한 이유는 **조금 자세하게? TMI** 부분에서 후술하겠다.  
 >> **(디코더 부분)**  
+>> 구현된 오토인코더는 '데이터 전처리'의 역할을 맡는다.  
+>> 구현된 오토인코더를 사용하여 전처리된 데이터를  
+>> isolation forest와 random forest에 집어 넣어  
+>> 분류 성능을 확인한다.  
 >> ### **Latent Vector**  
 >>> Latent Vector는 오토인코더의 인코더 부분에서 출력되는 feature map이다.  
 >>> 인코더를 통해 원래 데이터를 Convolution 연산과 LSTM으로 함축시키게 된다.  
@@ -114,7 +118,7 @@ layout: post
 >> Latent Vector를 활용하여 이상 탐지를 진행하려고 한다.  
 >
 > ## **조금 자세하게? TMI**
----
+> ---
 >> 1. **LSTM과 Convolution을 같이 사용한 이유.**  
 >> <img src="/images/fulls/encoding_part.JPG" style="width:653px; height:411px;">  
 >> 위 사진과 같이, 인코더 부분에서 LSTM으로 데이터가 입력되기 전에,  
@@ -146,3 +150,53 @@ layout: post
 >> 과대적합(Overfitting)이 일어나지 않게 만들기 위하여  
 >> dropout과 batch normalization을 사용하였다.  
 >> **Latent Vector의 추출은 쉽게! 복원은 어렵게!**  
+  
+# **결과**  
+> ---
+> ```python
+> from sklearn.model_selection import train_test_split as tts
+> x_train, x_test, y_train, y_test = tts(
+>       data, label, 
+>       test_size=0.3, 
+>       random_state=42,
+>       stratify=label
+> )
+> ```  
+> 284,807개의 샘플을 이상치 비율에 맞춰 train, test로 분할하였다.  
+> train set 내에서 다시 한 번 train, valid로 분할하였다.  
+>   
+> ## **성능 비교**
+> ---
+>> <img src="/images/fulls/isofo.JPG" style="width:589px; height:174px;">  
+>> 왼쪽은 제공된 데이터를 isolation forest에 그대로 집어 넣어  
+>> 추론한 결과, 오른쪽은 latent vector를  
+>> isolation forest에 집어 넣어 추론한 결과이다.   
+>> 오토인코더를 통한 전처리를 수행한 경우가  
+>> 조금이나마 더 나은 성능을 지님을 확인할 수 있다.  
+>>   
+>> <img src="/images/fulls/ranfo.JPG" style="width:588px; height:183px;">  
+>> 왼쪽은 제공된 데이터를 random forest에 그대로 집어 넣어  
+>> 추론한 결과, 오른쪽은 latent vector를  
+>> random forest에 집어 넣어 추론한 결과이다.  
+>> 오토인코더를 통한 전처리를 수행한 경우가  
+>> 더 나은 성능을 지님을 확인할 수 있다.  
+>  
+> ## **어떻게 됐길래 성능이 좋아졌을까?(데이터 시각화)**
+> ---
+>> <img src="/images/fulls/tsne_vis.JPG" style="width:528px; height:277px;">  
+>> t-SNE를 사용하여 train set을 시각화하였다.  
+>> 노란색은 정상 데이터, 붉은색은 이상치를 나타낸다.  
+>> 왼쪽은 제공된 데이터 원본, 오른쪽은  
+>> latent vector를 나타낸 것이다.  
+>> 한 눈에 보기에도 왼쪽 데이터에서는 패턴을 찾지 못하여  
+>> 정상 데이터와 이상 데이터가 골고루 섞여있어 분류하기 어려워 보인다.  
+>> 반면, 오른쪽 데이터에서는 이상 데이터들이 어느 정도 밀집된 것을  
+>> 확인할 수 있다. **패턴을 찾은 것이다!**  
+>>  
+>> <img src="/images/fulls/pls_vis.JPG" style="width:666px; height:259px;">  
+>> PLS regression을 사용하여 train set을 시각화하였다.  
+>> 왼쪽은 제공된 데이터 원본, 오른쪽은  
+>> latent vector를 나타낸 것이다.  
+>> 왼쪽의 경우 위와 마찬가지로 분류하기 어려워 보인다.  
+>> 반면, 오른쪽은 위와 다르게 이상 데이터가 밀집되어 있지 않지만,  
+>> 정상 데이터와 다르게 퍼져있음을 확인할 수 있다.  
