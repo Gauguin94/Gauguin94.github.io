@@ -36,7 +36,7 @@ layout: post
 >> "시간"이라는 특성이 매우 큰 영향을 끼친다고 생각한다.  
 >> 예를 들어, 어제까지 10년간 하루에 100원만 쓰던 사람이 갑자기  
 >> 오늘 10,000원을 쓴다면 이상 거래를 의심해볼만 하다.  
->> **왜?**  
+>> <span style='background-color: #fff5b1'>왜?</span>  
 >> 지금껏 하루에 100원만 썼는데("지금껏"이라는 시간의 개념.)  
 >> 하루 아침에 달라졌기 때문이다.  
 >> 하지만 이번에 다룰 데이터에서는 거래에 관련된 정보들에 이미 PCA를 적용하여  
@@ -45,7 +45,7 @@ layout: post
 >> PCA로 차원 축소되어 있다고 생각하여 이번 이상치 탐지에 크게 연관이 없을 것이라고  
 >> 생각하였고, 때마침 상관성도 옅게 도출되었기 때문에  
 >> Time은 과감하게 제외하고 분석을 진행하였다.  
->> **(위의 사진이 Class와 다른 Feature 간 상관도를 나타낸다.)**
+>> <span style='background-color: #fff5b1'>(위의 사진이 Class와 다른 Feature 간 상관도를 나타낸다.)</span>  
   
 # **도전**
 > ---
@@ -59,7 +59,7 @@ layout: post
 > 그저 신경망의 입력으로 'A'라는 데이터를 집어 넣고  
 > 신경망의 출력으로 'A'라는 데이터가 똑같이 나오도록 학습시키는 것이다.  
 > (대개, fully connected layer를 연달아 사용하여 신경망을 구성한다.)  
-> **똑같이 나오도록 학습시키는게 이상 탐지랑 뭔 상관?**  
+> <span style='background-color: #fff5b1'>똑같이 나오도록 학습시키는게 이상 탐지랑 뭔 상관?</span>  
 > 앞서 z-score, knn, k-means, isolation forest등 이상 탐지를 진행하는  
 > 전형적인 방법들을 나열하였다.  
 > 이들의 공통점이 무엇인가 하면,  
@@ -67,7 +67,7 @@ layout: post
 > 어떠한 차이가 있다는 것을 전제로 한다는 것이다.  
 > 그리하여 정상 데이터들을 서로 군집시키거나, 이상 데이터를 고립시키는  
 > 방법 등을 사용하여 정상 데이터와 이상 데이터를 분류할 수 있도록 한다.  
-> **그렇다면,**  
+> <span style='background-color: #fff5b1'>그렇다면,</span>  
 > 오토인코더는 말 그대로 데이터 복원에 초점을 맞춰 학습을 진행하므로  
 > 오토인코더로 하여금 정상 데이터만을 학습시켜 복원하도록 한다면,  
 > 새로운 정상 데이터를 집어 넣게 되었을 경우에는 성공적으로 복원을 할 것이며,  
@@ -80,13 +80,13 @@ layout: post
 >> 일반 오토인코더가 아닌 CNN에서의 Convolution과 LSTM을 결합한 오토인코더를  
 >> 설계하여 데이터 분석을 진행한다.(Convolutional Recurrent Neural Network, CRN)  
 >> 입력이 되는 데이터는 Convolution layer를 지나 첫 번째 LSTM을 거치게 된다.  
->> **(인코더 부분)**  
+>> <span style='background-color: #fff5b1'>(인코더 부분)</span>  
 >> 첫 번째 LSTM을 통해 만들어진 **Latent Vector**가 두 번째 LSTM과  
 >> Convoluional Transpose Layer를 지나 원래의 데이터에 가깝게 복원이 된다.  
 >> 인코딩 부분과는 다르게 디코딩 과정에만 dropout과  
 >> Batch Normalization과 같은 규제를 추가하였다.  
 >> 이와 같이 설계한 이유는 **조금 자세하게? TMI** 부분에서 후술하겠다.  
->> **(디코더 부분)**  
+>> <span style='background-color: #fff5b1'>(디코더 부분)</span>  
 >> 구현된 오토인코더는 '데이터 전처리'의 역할을 맡는다.  
 >> 구현된 오토인코더를 사용하여 전처리된 데이터를  
 >> isolation forest와 random forest에 집어 넣어  
@@ -112,7 +112,7 @@ layout: post
 >>> 훌륭한 역할을 수행할 수 있다고 생각한다.  
 >>> 이러한 차원 축소를 거쳐 분류, 혹은 학습에 사용되는 연산량을  
 >>> 크게 줄일 수 있는 장점 또한 갖게 된다.  
->> **그리하여**  
+>> <span style='background-color: #fff5b1'>그리하여</span>  
 >> 정상 데이터만을 사용하여 ConvLstm AutoEncoder를 학습시키고,(CRN)  
 >> 학습이 끝난 해당 오토인코더에 평가 데이터를 집어 넣어 추출되는  
 >> Latent Vector를 활용하여 이상 탐지를 진행하려고 한다.  
@@ -149,7 +149,7 @@ layout: post
 >> 원래의 데이터를 복원하는 역할을 하기 때문에  
 >> 과대적합(Overfitting)이 일어나지 않게 만들기 위하여  
 >> dropout과 batch normalization을 사용하였다.  
->> **Latent Vector의 추출은 쉽게! 복원은 어렵게!**  
+>> <span style='background-color: #fff5b1'>Latent Vector의 추출은 쉽게! 복원은 어렵게!</span>  
   
 # **결과**  
 > ---
@@ -191,7 +191,8 @@ layout: post
 >> 한 눈에 보기에도 왼쪽 데이터에서는 패턴을 찾지 못하여  
 >> 정상 데이터와 이상 데이터가 골고루 섞여있어 분류하기 어려워 보인다.  
 >> 반면, 오른쪽 데이터에서는 이상 데이터들이 어느 정도 밀집된 것을  
->> 확인할 수 있다. **모델이 어떠한 패턴을 찾은 것이다!**  
+>> 확인할 수 있다.  
+>> <span style='background-color: #fff5b1'>모델이 어떠한 패턴을 찾은 것이다!</span>  
 >>  
 >> <img src="/images/fulls/pls_vis.JPG" style="width:666px; height:259px;">  
 >> PLS regression을 사용하여 train set을 시각화하였다.  
