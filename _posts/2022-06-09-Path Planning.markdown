@@ -45,8 +45,8 @@ layout: post
 ---
 <img src="/images/fulls/rrtstar_pseudo.jpg" style="width:567px; height:350px;"> 
 
->> 경로계획에 사용되는 알고리즘은 RRT*로 선정하였다.  
->> RRT*는 RRT(Rapidly-exploring Random Tree) 알고리즘의  
+>> 경로계획에 사용되는 알고리즘은 RRTstar로 선정하였다.  
+>> RRTstar는 RRT(Rapidly-exploring Random Tree) 알고리즘의  
 >> 개선된 버전으로, 트리 재생성 및 연결(tree rewiring),  
 >> **최근접 이웃 탐색(Nearest Neighbor Search)**이라고 하는  
 >> 기능을 도입하여 경로 탐색 품질을 개선한 경로계획 알고리즘이다.  
