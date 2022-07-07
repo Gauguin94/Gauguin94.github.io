@@ -136,7 +136,7 @@ layout: post
 >> 설계한 모델에서는 n=8로 진행하였다.(conv에서의 channel)  
 >>   
 >> 2. **디코딩 부분에서만 규제를 사용한 이유.**  
->> <img src="/images/fulls/dont_drop.JPG" style="width:352px; height:319px;">  
+>> <img src="/images/fulls/dont_dropout.JPG" style="width:305px; height:308px;">  
 >> 인코딩 부분에서 dropout 및 batch normalization을  
 >> 사용한다면, 온전한 Latent Vector가 추출되지 않을 수 있다.  
 >> (dropout과정에서 node들을 확률적으로 사용하기 때문에  
