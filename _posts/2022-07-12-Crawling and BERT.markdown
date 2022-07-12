@@ -4,14 +4,14 @@ layout: post
 <img src="/images/fulls/adven.jpg" style="width:292px; height:111px;">  
 <strong>바칼 - 죤씨나, 바티스따, 렌디오턴, 드웨인좐슨, 성게의버프</strong> 
   
-
+  
 ## **제가 했던 프로젝트의 일부는**<br/>
 ## **좌측 'Project List'의 목록을 클릭하여**<br/>
 ## **확인하실 수 있습니다.**<br/>
   
-
+  
 # 던파 커뮤니티 크롤링과 BERT(Transformer)
-## 토이 프로젝트<br/>  
+### 토이 프로젝트<br/>  
 > ---
 > 얼마전 출시된 이스핀즈는 개인적으로 손에 꼽히는  
 > 던전앤파이터 컨텐츠 중 하나라고 생각한다.  
