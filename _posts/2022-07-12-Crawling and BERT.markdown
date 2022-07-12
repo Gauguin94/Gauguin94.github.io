@@ -54,6 +54,7 @@ layout: post
     from bs4 import BeautifulSoup
 
     PAGE_URL = "https://gall.dcinside.com/mgallery/board/lists/"
+    POST_URL = "https://gall.dcinside.com/mgallery/board/view/"
     USER_AGENT = {'User-Agent' : "유출하면 안될 것 같습니다."}
 
     def clickPost():
