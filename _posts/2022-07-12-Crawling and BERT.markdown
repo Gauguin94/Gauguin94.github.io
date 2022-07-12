@@ -49,8 +49,10 @@ layout: post
 > 머릿 속에 그것들을 저장하는 과정을 모사한다.  
 >  
 ``` python  
+    import csv
     import time
     import requests
+    from random import randint
     from bs4 import BeautifulSoup
 
     MAX_SLEEP_TIME = 5
