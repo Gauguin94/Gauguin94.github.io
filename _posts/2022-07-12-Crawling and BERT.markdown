@@ -53,6 +53,7 @@ layout: post
     import requests
     from bs4 import BeautifulSoup
 
+    MAX_SLEEP_TIME = 5
     PAGE_URL = "https://gall.dcinside.com/mgallery/board/lists/"
     POST_URL = "https://gall.dcinside.com/mgallery/board/view/"
     USER_AGENT = {'User-Agent' : "유출하면 안될 것 같습니다."}
