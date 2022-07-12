@@ -112,7 +112,7 @@ layout: post
 > 로봇이 아닌 사람이라는 것을 어필하기 위해  
 > 1~5초 사이 임의로 요청을 보내도록  
 > time.sleep을 사용하였다.  
-    
+  
 ## WordCloud를 이용한 이스핀즈 관련 키워드 시각화  
 ---
 > 앞선 크롤링 작업 후, 제목이나 내용 속에 '이스핀즈'란  
@@ -188,12 +188,16 @@ layout: post
 > 분류하거나 찾을 수 없을 것이기 때문에  
 > 이를 직접 넣어주도록 한다.  
 > (이스핀즈를 '이', '스핀', '즈'로 반환한다...)  
-> <img src="/images/fulls/new_word.JPG" style="width:744px; height:324px;">  
+>  
+> <img src="/images/fulls/new_word.JPG" style="width:744px; height:324px;">
+>  
 > 먼저 konlply가 존재하는 디렉토리를 찾는다.  
 > 그리고 표시되어있는 jar파일을 클릭하여  
 > 표시되어있는 txt파일에 직접 던전앤파이터 관련 용어들을  
 > 기입해주면 konlpy가 해당 단어들에 대해 인식 가능하게 된다!  
-> <img src="/images/fulls/wordcloud_dnf.png" style="width:1000px; height:1000px;">  
+>  
+> <img src="/images/fulls/wordcloud_dnf.png" style="width:1000px; height:1000px;">
+>  
 > 글씨 크기가 클수록 출현 빈도가 높은 단어이다.  
 > 앞서, '이스핀즈'라는 단어가 포함되어 있는 글만  
 > 선별하였기 때문에 이스핀즈가 가장 크게 자리잡고 있음을  
