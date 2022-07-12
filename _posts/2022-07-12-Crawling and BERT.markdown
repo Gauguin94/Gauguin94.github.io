@@ -222,4 +222,5 @@ layout: post
 > attention과 encoder, decoder를 기반으로 한  
 > Transformer는 문자영역에서 Computer Vision 영역에 이르기까지,  
 > 정말 다양한 분야에서 사용되며 발전하고 있다.  
+> 2018년 구글에서 공개한 pre-trained model인  
 > BERT를 사용하여 앞서 수집한 글에 대해 감정 분석을 시도해보자!  
