@@ -48,6 +48,7 @@ layout: post
 > 마지막으로, <span style='background-color: #fff5b1'>savePost</span>는 글을 읽은 후,  
 > 머릿 속에 그것들을 저장하는 과정을 모사한다.  
 >  
+
 ```python  
     import csv
     import time
@@ -102,6 +103,7 @@ layout: post
             write.writerows(post_info)
         print("save fin!")
 ```  
+
 > 위 코드는 지하성과 용사 마이너 갤러리 크롤링을 수행하는 코드이다.  
 > https 응답이 온전치 않을 경우가 있어서 원문에는  
 > try, except를 사용하였지만 가독성을 위해 본문에서는 제외하였다.  
@@ -128,6 +130,7 @@ layout: post
 > 이를 확인해보고 시각화해보기 위해  
 > 한국어 정보 처리를 위한 파이썬 패키지 'konlpy'와  
 > 'WordCloud'를 사용하였다.  
+
 ```python
     import pandas as pd 
     from konlpy.tag import Okt
@@ -180,6 +183,7 @@ layout: post
         wc.to_file('wordcloud_dnf.png')
         print('fin!')
 ```  
+
 > 먼저, EXCEPT_WORD는 필자 개인적으로  
 > 필요없거나 제외해야할 단어를 모은 것이다.  
 > 개인의 이름이나 현 상황을 나타낸다기에 애매한 단어,  
@@ -214,4 +218,8 @@ layout: post
 
 ## BERT를 이용한 던파 커뮤니티 게시글 감정 분석.  
 ---
->
+> "Attenion is all you need"라는 페이퍼의 등장 이래로  
+> attention과 encoder, decoder를 기반으로 한  
+> Transformer는 문자영역에서 Computer Vision 영역에 이르기까지,  
+> 정말 다양한 분야에서 사용되며 발전하고 있다.  
+> BERT를 사용하여 앞서 수집한 글에 대해 감정 분석을 시도해보자!  
