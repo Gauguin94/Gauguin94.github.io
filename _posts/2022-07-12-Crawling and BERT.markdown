@@ -47,61 +47,70 @@ layout: post
 > 사람이 글의 내용과 제목을 읽는 과정을 모사한다.  
 > 마지막으로, <span style='background-color: #fff5b1'>savePost</span>는 글을 읽은 후,  
 > 머릿 속에 그것들을 저장하는 과정을 모사한다.  
->   
-> ### clickPost  
->> ---  
->> <img src="/images/fulls/dnfqq_address.JPG" style="width:320px; height:34px;">
-``` python
-import time
-import requests
-from bs4 import BeautifulSoup
+>  
+``` python  
+    import time
+    import requests
+    from bs4 import BeautifulSoup
 
-PAGE_URL = "https://gall.dcinside.com/mgallery/board/lists/"
-USER_AGENT = {'User-Agent' : "유출하면 안될 것 같습니다."}
+    PAGE_URL = "https://gall.dcinside.com/mgallery/board/lists/"
+    USER_AGENT = {'User-Agent' : "유출하면 안될 것 같습니다."}
 
-def clickPost():
-    # ~~(초기화 부분 생략)~~
-    for page_num in range(1, 450):
-        params = {'id':"dnfqq", 'page':f'{page_num}'}
-        response = requests.get(PAGE_URL, params=params, headers=USER_AGENT)
-        soup = BeautifulSoup(response.content, "html.parser")
-        contents = soup.find('tbody').find_all('tr') # 게시글 정보(anchor등을 갖고 있다. 'a')
+    def clickPost():
+        post_info = []
+        deadline = 2022070711
+        error_count = 0
 
-        for post_ in contents:
-            # ~~(페이지마다 존재하는 공지글 제외하는 부분 생략)~~
-            rand_value = randint(1, MAX_SLEEP_TIME) 
-            time.sleep(rand_value) # 저는 사람입니다!
+        for page_num in range(1, 450):
+            params = {'id':"dnfqq", 'page':f'{page_num}'}
+            response = requests.get(PAGE_URL, params=params, headers=USER_AGENT)
+            soup = BeautifulSoup(response.content, "html.parser")
+            contents = soup.find('tbody').find_all('tr') # 게시글 정보(게시글 별 제목, 주소(href))
 
-            title = post_.find('a').text # 게시글 제목 추출
-            post_params = {'id':"dnfqq", 'no':post_.attrs['data-no'], 'page':f'{page_num}', headers=USER_AGENT}
-            writing, date = extractPost(post_params) # 게시글 속 내용 추출 함수로 넘어감
-            post_info.append([title, writing]) # 게시글 별 제목과 내용
+            for post_ in contents:
+                # ~~(페이지마다 존재하는 공지글 제외하는 부분 생략)~~
+                rand_value = randint(1, MAX_SLEEP_TIME) 
+                time.sleep(rand_value)
 
-    savePost(post_info, file_num) # 크롤링한 것 전부 csv 파일로 저장
-```
->> 위 사진을 보면, id가 dnfqq임을 확인할 수 있다.  
->> params에 이를 저장하여 get 요청 시 활용하도록 한다.  
->> 또한 page_num을 1~450까지 증가시키는 부분을 확인할 수 있는데,  
->> 이는 1 페이지부터 450 페이지까지의 게시글을 확인하기 위해  
->> 선언한 것이라고 생각하면 된다.  
->> User-Agent를 비유해보자면,  
->> 서버에게 요청을 보낼 때 자신이 로봇이 아니고 사람임을  
->> 한 번 귀띔해준다는 뜻으로 생각하면 된다.  
->> [User-Agent 확인하는 사이트](http://m.avalon.co.kr/check.html) <- 클릭  
->> <img src="/images/fulls/tr_tbody.JPG" style="width:681px; height:157px;">
->> <img src="/images/fulls/a_tag.JPG" style="width:674px; height:48px;">
->> 이제 어떤 태그를 찾아야 게시글을  
->> 불러들일 수 있는지 확인해야한다.  
->> 첫 번째 사진을 보면, **'tr'**이라는 태그와  
->> 게시글이 연관되어 있음을 확인할 수 있다.  
->> soup.find('tbody').find_all('tr')을 사용하여  
->> 게시글 관련 정보(제목, href(URL))를 불러오도록 하였다.  
->> (두 번째 사진)  
->> 불러온 게시글 관련 정보는 **'contents'**에 담아두었다.  
->> <img src="/images/fulls/post_address.JPG" style="width:475px; height:33px;">
->> 이제 각 게시물을 확인하기 위해 위 사진에서 볼 수 있는  
->> 'no'를 확인하는 과정을 수행한다.  
->> 'no'는 위 코드에서 post_.attrs['data-no']를 통해 추출할 수 있었다.  
->> (**이미 contents에서 'a href'를 확인 가능한데 왜 이렇게 했냐?**
->> 돌아가는 길이지만 다른 방법도 사용해보고 싶었다.)  
->>
+                title = post_.find('a').text # 게시글 제목 추출
+                post_params = {'id':"dnfqq", 
+                               'no':post_.attrs['data-no'], 
+                               'page':f'{page_num}'}
+                writing, date = extractPost(post_params) # 게시글 속 내용 추출 함수로 넘어감
+                post_info.append([title, writing]) # 게시글 별 제목과 내용
+                if date < deadline: # 이스핀즈 업데이트 당일 11시 이전 내용은 수집하지 않겠다.
+                    break
+
+        savePost(post_info) # 크롤링한 것 전부 csv 파일로 저장
+
+    def extractPost(post_params):
+        post_response = requests.get(POST_URL, params=post_params, headers=USER_AGENT)
+        post_soup = BeautifulSoup(post_response.content, "html.parser")
+        contents = post_soup.find('div', class_='write_div') # 게시글 내용 추출
+        date = post_soup.find('span', class_='gall_date').text.replace(' ','').replace('.', '')[:10]
+        date = int(date)
+        return contents.text, date
+
+    def savePost(post_info):
+        feature = ['title', 'text']
+        with open('testset.csv', 'w') as f:
+            write = csv.writer(f)
+            write.writerow(feature)
+            write.writerows(post_info)
+        print("save fin!")
+```  
+> 위 코드는 지하성과 용사 마이너 갤러리 크롤링을 수행하는 코드이다.  
+> https 응답이 온전치 않을 경우가 있어서 원문에는  
+> try, except를 사용하였지만 가독성을 위해 본문에서는 제외하였다.  
+> 이전 Dunfamoa 크롤링과 크게 다른 점이 있다면,  
+> User-Agent와 time.sleep()을 사용했다는 것이다.  
+> DC 인사이드는 로봇으로 의심되는 유저를 접속 제한시켜  
+> 외부의 공격이나 서버의 부하를 막는다.  
+> 필자는 이런 점을 간과한 채로 크롤링을 시도하여  
+> 20분간 접속 제한 상태가 되었다.  
+> 그리하여 HTTP 요청을 하는 유저의  
+> 주민등록증이라고 할 수 있는 User-Agent를 사용하였다.  
+> 그리고 의도치 않은 서버 부하를 피하기 위해,  
+> 로봇이 아닌 사람이라는 것을 어필하기 위해  
+> 1~5초 사이 임의로 요청을 보내도록  
+> time.sleep을 사용하였다.  
