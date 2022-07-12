@@ -3,10 +3,12 @@ layout: post
 ---
 <img src="/images/fulls/adven.jpg" style="width:292px; height:111px;">  
 <strong>바칼 - 죤씨나, 바티스따, 렌디오턴, 드웨인좐슨, 성게의버프</strong> 
+  
 
 ## **제가 했던 프로젝트의 일부는**<br/>
 ## **좌측 'Project List'의 목록을 클릭하여**<br/>
 ## **확인하실 수 있습니다.**<br/>
+  
 
 # 던파 커뮤니티 크롤링과 BERT(Transformer)
 ## 토이 프로젝트<br/>  
@@ -215,7 +217,7 @@ layout: post
 > 솔로 플레이를 적극적으로 즐기고 있는 유저들이 많다.  
 > 그렇기 때문에 '솔플'이란 단어도 매우 크게 자리잡고  
 > 있는 것을 확인할 수 있다.  
-
+  
 ## BERT를 이용한 던파 커뮤니티 게시글 감정 분석.  
 ---
 > "Attenion is all you need"라는 페이퍼의 등장 이래로  
