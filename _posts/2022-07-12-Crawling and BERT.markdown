@@ -48,7 +48,7 @@ layout: post
 > 마지막으로, <span style='background-color: #fff5b1'>savePost</span>는 글을 읽은 후,  
 > 머릿 속에 그것들을 저장하는 과정을 모사한다.  
 >  
-``` python  
+```python  
     import csv
     import time
     import requests
@@ -128,7 +128,7 @@ layout: post
 > 이를 확인해보고 시각화해보기 위해  
 > 한국어 정보 처리를 위한 파이썬 패키지 'konlpy'와  
 > 'WordCloud'를 사용하였다.  
-``` python
+```python
     import pandas as pd 
     from konlpy.tag import Okt
     from collections import Counter
