@@ -3,9 +3,9 @@ layout: post
 ---
 <img src="/images/fulls/me.gif" style="width:600px; height:337px;">  
 
-**제가 했던 프로젝트의 일부는**  
-**좌측 'Project List'의 목록을 클릭하여**  
-**확인하실 수 있습니다.**  
+## **제가 했던 프로젝트의 일부는**  
+## **좌측 'Project List'의 목록을 클릭하여**  
+## **확인하실 수 있습니다.**  
 
 # 던전앤파이터란 무슨 의미인가요?
 
