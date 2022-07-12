@@ -129,5 +129,66 @@ layout: post
 > 한국어 정보 처리를 위한 파이썬 패키지 'konlpy'와  
 > 'WordCloud'를 사용하였다.  
 ``` python
+    import pandas as pd 
+    from konlpy.tag import Okt
+    from collections import Counter
+    from tqdm import tqdm
+    from wordcloud import WordCloud
 
-```
+    EXCEPT_WORD = ['그냥', '캐릭', '지금', '진짜', '이번', '던전', '정도', '시즌', '생각', '존나', '던파', '시스템', '어차피', '무조건',
+                    '새끼', '하나', '유저', '사람', '소모', '게임', '이상', '한번', '시발', '보고', '패치', '병신', '시간', '입장', '기준', '씨발', '이유', '때문',
+                    '대충', '가능', '거의', '이벤트', '차이', '계속', '자체', '오늘', '다시', '사실', '지랄', '가면', '조금', '나머지', '상황', '따리', '느낌', '수준', '신청',
+                    '부위', '일단', '원금', '추가', '시작', '얼마나', '캐릭터', '상태', '여기', '출시', '진입', '다른', '페이', '제일', '원래', '가기', '다음', '정상',
+                    '마리', '가야', '제외', '어케', '의미', '그거', '오히려', '잡고', '거기', '이면', '공격', '처음', '하루', '해도', '삭제', '언제', '갈수', '거임',
+                    '치면', '만하', '팩트', '페이지', '제발', '대신', '싸개', '이건', '해결', '가도', '아예', '이제', '금방', '전부', '거지', '소리', '건가', '마냥',
+                    '개월', '부분', '잘만', '런가', '누가', '출발', '그대로', '본인', '그게', '절대', '념글', '제대로', '최소', '유효', '선택', '효율', '채용', '굳이', '쓰레기',
+                    '기존', '저번', '질문', '무난', '실제', '분탕', '고민', '새끼', '어제', '피하', '어디', '안보', '바로', '추천', '영상', '플레이']
+    TARGET_POS = ['Noun', 'Unknown']
+
+    if __name__ == "__main__":
+        okt = Okt() # 객체 생성
+        df = pd.read_csv('./datasets/testset.csv', encoding='utf-8') # 데이터 불러오기
+
+        pos_set = []
+        for sentence in tqdm(df['text']): # 문장을 품사로 나눈다.
+            pos_set.append(okt.pos(sentence))
+
+        word_set = []
+        for pos_ in tqdm(pos_set): # 나뉜 품사 중 명사, 알수없음에 해당하는 단어만 추출한다.
+            for word, tag in pos_:
+                if tag in TARGET_POS:
+                    word_set.append(word)
+
+        target_set = []
+        for num, word in tqdm(enumerate(word_set)): # 추출된 단어 중 본인이 생각하기에 의미없는 단어나, 한 글자로 이루어진 단어, 실명이 언급되는 단어는 제외한다.
+            if word not in EXCEPT_WORD:
+                if len(word)>1:
+                    target_set.append(word)
+
+        count = Counter(target_set) # 단어 출현 빈도를 확인한다. 빈도별 내림차순으로 저장한다.
+        noun_list = count.most_common(150) # 150개까지만 저장하겠다.
+        
+        # wordcloud 그리기 및 저장
+        wc = WordCloud(font_path='./datasets/08SeoulNamsanB_0.ttf',
+                        background_color='white',
+                        width=1000,
+                        height=1000,
+                        max_words=150,
+                        max_font_size=250)
+
+        wc.generate_from_frequencies(dict(noun_list))
+        wc.to_file('wordcloud_dnf.png')
+        print('fin!')
+```  
+> 먼저, EXCEPT_WORD는 필자 개인적으로  
+> 필요없거나 제외해야할 단어를 모은 것이다.  
+> 개인의 이름이나 현 상황을 나타낸다기에 애매한 단어,  
+> 욕설을 제외하였다.  
+> TARGET_POS는 konlpy를 통해 추출되는 한글 중  
+> 원하는 품사만을 확인하기 위한 것이다.  
+> 명사와 '알 수 없는(게임 용어?)'이란 카테고리에  
+> 존재하는 단어들만을 확인하도록 한다.  
+> 그리고 던전앤파이터 용어는 당연히 konlpy가  
+> 분류하거나 찾을 수 없을 것이기 때문에  
+> 이를 직접 넣어주도록 한다.  
+> (이스핀즈를 '이', '스핀', '즈'로 반환한다...)  
