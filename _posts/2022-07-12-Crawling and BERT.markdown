@@ -218,7 +218,7 @@ layout: post
 > 그렇기 때문에 '솔플'이란 단어도 매우 크게 자리잡고  
 > 있는 것을 확인할 수 있다.  
   
-## BERT를 이용한 던파 커뮤니티 게시글 감정 분석.  
+## BERT를 이용한 던파 커뮤니티 게시글 분류.  
 ---
 > "Attenion is all you need"라는 페이퍼의 등장 이래로  
 > attention과 encoder, decoder를 기반으로 한  
