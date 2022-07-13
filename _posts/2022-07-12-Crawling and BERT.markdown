@@ -284,7 +284,7 @@ model.cuda()
 ```  
   
 > 감정(만족, 불만족)에 따라 분류하는 모델이 목표이기 때문에  
-> 2 종류의 label로 Classification을 진행하는  
+> 2 종류의 label로 Classification을 진행하는 버전의  
 > pre-trained BERT를 불러온 뒤, 학습 및 평가를 진행한다.  
 >  
 > <img src="/images/fulls/1st_result.JPG" style="width:230px; height:141px;">  
