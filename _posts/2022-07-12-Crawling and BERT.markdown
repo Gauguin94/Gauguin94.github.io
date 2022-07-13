@@ -219,11 +219,79 @@ layout: post
 > Transformer는 문자영역에서 Computer Vision 영역에 이르기까지,  
 > 정말 다양한 분야에서 사용되며 발전하고 있다.  
 > 2018년 구글에서 공개한 pre-trained model인  
-> BERT를 사용하여 앞서 수집한 글에 대해 분류를 시도해보자!  
+> Multilingual BERT를 사용하여 앞서 수집한 글에 대해 분류를 시도해보자!  
 
-### 전체적인 흐름
+## 두 가지 방법  
 > ---
->
->
+> <img src="/images/fulls/dnf_review.JPG" style="width:336px; height:147px;">
+>  
+> 지하성과 용사 마이너 갤러리 크롤링을 통해  
+> 얻은 글은 대략 15,000개 정도이다.  
+> 이 중에서 '이스핀즈'라는 키워드가 들어가는 글은  
+> 대략 2,700개 정도이며,  
+> 이 중에서 현재 패치에 대한 감정(만족, 불만족)을  
+> 드러내는 글을 개인적으로 선별한 결과  
+> 571개의 글만이 남게 되었다.  
+> 전이학습이 적은 데이터셋에 대해서도  
+> 좋은 결과를 낳을 수 있다고 하지만,  
+> 개인적으로 너무나 작은 규모의 데이터라고  
+> 생각했기 때문에 그나마 데이터의 성격이 비슷하다고 할 수 있는  
+> 네이버 영화 리뷰(NSMC)[https://github.com/e9t/nsmc]를  
+> 학습에 함께 사용하였다.(150,000개)  
+> <img src="/images/fulls/nsmc_review.JPG" style="width:341px; height:133px;">
 
-### Tokenizing과 Attetion Masking
+### 1. 두 개의 데이터 셋을 합쳐보자.  
+> ---
+> <img src="/images/fulls/summation.JPG" style="width:377px; height:224px;">  
+>  
+> 먼저, 지하성과 용사 마이너 갤러리 크롤링에서 선별한  
+> 글 571개중 100개를 평가용 데이터로 미리 제외시켰다.  
+> 그리고 네이버 영화 리뷰 데이터 150,000개와  
+> 크롤링 데이터 471개를 합쳐 150,471개의  
+> 학습용 데이터셋을 구성하였다.  
+  
+```python
+nsmc = pd.read_csv("./datasets/ratings_train.txt", sep='\t').drop(['id'], axis=1)
+dnf = pd.read_csv("./datasets/testset.csv", encoding='cp949').dropna()
+dnf_train = dnf[:471]
+test = dnf[471:571]
+
+temp = pd.DataFrame()
+for i in range(4):
+    temp = temp.append(dnf_train, ignore_index=True)
+train = nsmc.append(temp, ignore_index=True)
+train = train.astype({'label':int})
+
+# ~~ 중략(토크나이징, 패딩, 어텐션 마스킹) ~~#
+
+train_inputs, validation_inputs, train_labels, validation_labels = train_test_split(input_ids, train['label'].values, random_state=42, test_size=0.1)
+train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_ids, random_state=42, test_size=0.1)
+
+```  
+  
+> <img src="/images/fulls/sum_set.JPG" style="width:320px; height:167px;">  
+>  
+> 그리고 Tokenizing, Padding, Attention Masking을  
+> 데이터에 적용하고 학습용 데이터를  
+> 학습 및 검증 데이터로 나눈 뒤 자료형을 텐서로 변환한다.  
+>  
+> <img src="/images/fulls/bert_pre.JPG" style="width:437px; height:241px;">  
+  
+```python
+model = BertForSequenceClassification.from_pretrained("bert-base-multilingual-cased", num_labels=2)
+model.cuda()
+```  
+  
+> 감정(만족, 불만족)에 따라 분류하는 모델이 목표이기 때문에  
+> 2 종류의 label로 Classification을 진행하는  
+> pre-trained BERT를 불러온 뒤, 학습 및 평가를 진행한다.  
+>  
+> <img src="/images/fulls/bert_pre.JPG" style="width:230px; height:141px;">  
+>  
+> 결과는 생각보다 나쁘지 않았다.  
+> 비교 대상이 없어서 객관적인 평가를 내리긴 어렵겠지만,  
+> 지하성과 용사 마이너 갤러리를 크롤링하고 선별한 뒤  
+> 선별한 글을 모두 읽으며 라벨링을 직접 하면서  
+> 너무도 애매하다고 생각되는 글이 많았다.  
+> 예를 들어,  
+> 
