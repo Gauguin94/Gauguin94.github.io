@@ -224,7 +224,7 @@ layout: post
 
 ## 두 가지 방법  
 > ---
-> <img src="/images/fulls/dnf_review.JPG" style="width:336px; height:147px;">
+> <img src="/images/fulls/dnf_review.JPG" style="width:671px; height:294px;">
 >  
 > 지하성과 용사 마이너 갤러리 크롤링을 통해  
 > 얻은 글은 대략 15,000개 정도이다.  
@@ -239,11 +239,11 @@ layout: post
 > 생각했기 때문에 그나마 데이터의 성격이 비슷하다고 할 수 있는  
 > [네이버 영화 리뷰(NSMC)](https://github.com/e9t/nsmc)를  
 > 학습에 함께 사용하였다.(150,000개)  
-> <img src="/images/fulls/nsmc_review.JPG" style="width:341px; height:133px;">
+> <img src="/images/fulls/nsmc_review.JPG" style="width:682px; height:265px;">
 
 ### 1. 두 개의 데이터 셋을 합쳐보자.  
 > ---
-> <img src="/images/fulls/summation.JPG" style="width:377px; height:224px;">  
+> <img src="/images/fulls/summation.JPG" style="width:753px; height:448px;">  
 >  
 > 먼저, 지하성과 용사 마이너 갤러리 크롤링에서 선별한  
 > 글 571개중 100개를 평가용 데이터로 미리 제외시켰다.  
@@ -270,13 +270,13 @@ train_masks, validation_masks, _, _ = train_test_split(attention_masks, input_id
 
 ```  
   
-> <img src="/images/fulls/sum_set.JPG" style="width:320px; height:167px;">  
+> <img src="/images/fulls/sum_set.JPG" style="width:630px; height:338px;">  
 >  
 > 그리고 Tokenizing, Padding, Attention Masking을  
 > 데이터에 적용하고 학습용 데이터를  
 > 학습 및 검증 데이터로 나눈 뒤 자료형을 텐서로 변환한다.  
 >  
-> <img src="/images/fulls/bert_pre.JPG" style="width:437px; height:241px;">  
+> <img src="/images/fulls/bert_pre.JPG" style="width:873px; height:482px;">  
   
 ```python
 model = BertForSequenceClassification.from_pretrained("bert-base-multilingual-cased", num_labels=2)
@@ -287,7 +287,7 @@ model.cuda()
 > 2 종류의 label로 Classification을 진행하는 버전의  
 > pre-trained BERT를 불러온 뒤, 학습 및 평가를 진행한다.  
 >  
-> <img src="/images/fulls/1st_result.JPG" style="width:230px; height:141px;">  
+> <img src="/images/fulls/1st_result.JPG" style="width:460px; height:282px;">  
 >  
 > 결과는 생각보다 나쁘지 않았다.  
 > 비교 대상이 없어서 객관적인 평가를 내리긴 어렵겠지만,  
@@ -306,7 +306,7 @@ model.cuda()
 >  
 ### 2. 두 번의 Fine-tuning을 진행해보자.  
 > ---  
-> <img src="/images/fulls/tuning_twice.JPG" style="width:691px; height:353px;">  
+> <img src="/images/fulls/tuning_twice.JPG" style="width:1381px; height:705px;">  
 >  
 > 앞선 모델을 구현하며, 문뜩 이런 생각이 들었다.  
 > 150,000개의 데이터에 471개의 데이터를 추가해서  
@@ -326,7 +326,7 @@ model.cuda()
 > 적은 데이터로 학습이 이루어지더라도  
 > optimization이 앞선 결과보다 좋게 이루어지지 않을까?  
 >  
-> <img src="/images/fulls/2nd_result.JPG" style="width:227px; height:139px;">  
+> <img src="/images/fulls/2nd_result.JPG" style="width:453px; height:277px;">  
 >  
 > 가설을 필두로 새로이 구현해본 결과  
 > 앞선 결과보다 향상된 성능을 보였다!  
