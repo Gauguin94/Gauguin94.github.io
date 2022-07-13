@@ -31,7 +31,7 @@ layout: post
 
 ## 저는 로봇이 아닙니다. 사람입니다.<br/>
 > ---
-> <img src="/images/fulls/cmodule.JPG" style="width:472px; height:216px;"> 
+> <img src="/images/fulls/cmodule.JPG" style="width:993px; height:431px;"> 
 > 
 > 지하성과 용사 마이너 갤러리를 크롤링하는 흐름은 아래와 같다.  
 > <span style='background-color: #fff5b1'>clickPost</span>는 현실 공간에서,  
