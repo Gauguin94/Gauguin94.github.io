@@ -114,7 +114,7 @@ layout: post
 > time.sleep을 사용하였다.  
   
 ## WordCloud를 이용한 이스핀즈 관련 키워드 시각화  
----
+> ---
 > 앞선 크롤링 작업 후, 제목이나 내용 속에 '이스핀즈'란  
 > 단어가 포함되어 있는 글만 선별하는 작업을 수행하였다.  
 > 이스핀즈 패치 이후 이스핀즈와 같이 언급되는 단어 중  
@@ -213,12 +213,17 @@ layout: post
 > 있는 것을 확인할 수 있다.  
   
 ## BERT를 이용한 던파 커뮤니티 게시글 분류  
----
+> ---
 > "Attenion is all you need"라는 페이퍼의 등장 이래로  
 > attention과 encoder, decoder를 기반으로 한  
 > Transformer는 문자영역에서 Computer Vision 영역에 이르기까지,  
 > 정말 다양한 분야에서 사용되며 발전하고 있다.  
 > 2018년 구글에서 공개한 pre-trained model인  
 > BERT를 사용하여 앞서 수집한 글에 대해 분류를 시도해보자!  
+
+### 전체적인 흐름
+> ---
+>
+>
 
 ### Tokenizing과 Attetion Masking
