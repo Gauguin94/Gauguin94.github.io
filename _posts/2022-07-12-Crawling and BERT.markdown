@@ -236,7 +236,7 @@ layout: post
 > 좋은 결과를 낳을 수 있다고 하지만,  
 > 개인적으로 너무나 작은 규모의 데이터라고  
 > 생각했기 때문에 그나마 데이터의 성격이 비슷하다고 할 수 있는  
-> 네이버 영화 리뷰(NSMC)[https://github.com/e9t/nsmc]를  
+> [네이버 영화 리뷰(NSMC)](https://github.com/e9t/nsmc)를  
 > 학습에 함께 사용하였다.(150,000개)  
 > <img src="/images/fulls/nsmc_review.JPG" style="width:341px; height:133px;">
 
@@ -286,7 +286,7 @@ model.cuda()
 > 2 종류의 label로 Classification을 진행하는  
 > pre-trained BERT를 불러온 뒤, 학습 및 평가를 진행한다.  
 >  
-> <img src="/images/fulls/bert_pre.JPG" style="width:230px; height:141px;">  
+> <img src="/images/fulls/1st_result.JPG" style="width:230px; height:141px;">  
 >  
 > 결과는 생각보다 나쁘지 않았다.  
 > 비교 대상이 없어서 객관적인 평가를 내리긴 어렵겠지만,  
