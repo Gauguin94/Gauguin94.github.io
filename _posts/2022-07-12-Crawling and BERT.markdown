@@ -96,8 +96,7 @@ layout: post
             write.writerows(post_info)
         print("save fin!")
 ```  
-
-> 위 코드는 지하성과 용사 마이너 갤러리 크롤링을 수행하는 코드이다.  
+  
 > https 응답이 온전치 않을 경우가 있어서 원문에는  
 > try, except를 사용하였지만 가독성을 위해 본문에서는 제외하였다.  
 > <img src="/images/fulls/im_human.JPG" style="width:443px; height:118px;">  
