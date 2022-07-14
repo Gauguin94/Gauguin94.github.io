@@ -77,6 +77,31 @@ layout: post
 > ## **대략적인 흐름**  
 > ---
 >> <img src="/images/fulls/lstm_ae.JPG" style="width:584px; height:387px;">  
+  
+```python
+        self.conv_encoder1 = nn.Conv1d(1, 3, kernel_size=3).to(DEVICE)
+        self.conv_encoder2 = nn.Conv1d(3, 8, kernel_size=3).to(DEVICE) 
+        # conv_encoder2 이후 np.transpose 사용하여 피쳐맵을 원하는 shape으로 맞춰줌.
+
+        self.lstm_encoder = nn.LSTM(
+            input_size=8, hidden_size=1,
+            num_layers=2,
+            batch_first=True
+        ).to(DEVICE)
+        # lstm_encoder에서 latent vector 반환
+        
+        self.lstm_decoder = nn.LSTM(
+            input_size=1, hidden_size=8,
+            num_layers=2, 
+            dropout=0.5,
+            batch_first=True
+        ).to(DEVICE)
+
+        # lstm_decoder 이후 np.transpose 사용하여 피쳐맵을 원하는 shape으로 맞춰줌. 
+        self.conv_decoder1 = nn.ConvTranspose1d(8, 3, kernel_size=3).to(DEVICE)
+        self.conv_decoder2 = nn.ConvTranspose1d(3, 1, kernel_size=3).to(DEVICE)
+```  
+  
 >> 일반 오토인코더가 아닌 CNN에서의 Convolution과 LSTM을 결합한 오토인코더를  
 >> 설계하여 데이터 분석을 진행한다.(Convolutional Recurrent Neural Network, CRN)  
 >> 입력이 되는 데이터는 Convolution layer를 지나 첫 번째 LSTM을 거치게 된다.  
