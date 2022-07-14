@@ -76,7 +76,7 @@ layout: post
 > 
 > ## **대략적인 흐름**  
 > ---
->> <img src="/images/fulls/lstm_ae.png" style="width:785px; height:538px;">  
+>> <img src="/images/fulls/lstm_ae.JPG" style="width:584px; height:387px;">  
 >> 일반 오토인코더가 아닌 CNN에서의 Convolution과 LSTM을 결합한 오토인코더를  
 >> 설계하여 데이터 분석을 진행한다.(Convolutional Recurrent Neural Network, CRN)  
 >> 입력이 되는 데이터는 Convolution layer를 지나 첫 번째 LSTM을 거치게 된다.  
