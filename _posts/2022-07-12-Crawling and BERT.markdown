@@ -97,7 +97,7 @@ layout: post
         print("save fin!")
 ```  
   
-> https 응답이 온전치 않을 경우가 있어서 원문에는  
+> HTTP 응답이 온전치 않을 경우가 있어서 원문에는  
 > try, except를 사용하였지만 가독성을 위해 본문에서는 제외하였다.  
 > <img src="/images/fulls/im_human.JPG" style="width:443px; height:118px;">  
 > 이전 Dunfamoa 크롤링과 크게 다른 점이 있다면,  
